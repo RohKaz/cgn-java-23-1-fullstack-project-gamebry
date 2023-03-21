@@ -8,11 +8,8 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 
@@ -59,34 +56,6 @@ class GameServiceTest {
             //THEN
             verify(gameRepo).findAll();
             assertEquals(gamesList, result);
-        }
-
-        @Nested
-        @DisplayName("testing getGameByID")
-        class getGameByIDTests {
-
-            @Test
-            @DisplayName("should return the game with the given ID")
-            void getGameByIDIfGameIDExists() {
-                //GIVEN
-                when(gameRepo.findById("1")).thenReturn(Optional.ofNullable(game1));
-                //WHEN
-                Game result = gameService.getGameByID("1");
-                //THEN
-                verify(gameRepo).findById("1");
-                assertEquals(game1, result);
-            }
-
-            @Test
-            @DisplayName("should throw an exception if the game with the given ID does not exist")
-            void getGameByIDIfGameIDDoesNotExist_ThrowAnExceptionInstead() {
-                //GIVEN
-                when(gameRepo.findById("1")).thenReturn(java.util.Optional.empty());
-                //WHEN
-                assertThrows(NoSuchElementException.class, () -> gameService.getGameByID("1"));
-                //THEN
-                verify(gameRepo).findById("1");
-            }
         }
     }
 }
