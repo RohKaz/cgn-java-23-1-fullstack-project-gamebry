@@ -23,7 +23,7 @@ public class GameController {
     }
 
     @GetMapping("/games/{id}")
-    Game getGameByID(@PathVariable String id) {
+    public Game getGameByID(@PathVariable String id) {
         return gameService.getGameByID(id);
     }
 
