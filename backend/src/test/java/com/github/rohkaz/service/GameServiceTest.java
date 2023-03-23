@@ -36,26 +36,26 @@ class GameServiceTest {
         @DisplayName("should return all games that are saved in the list")
         void getAllGamesIfListIsNotEmpty() {
             //GIVEN
-            List<Game> gamesList = List.of(game1, game2);
-            when(gameRepo.findAll()).thenReturn(gamesList);
+            List<Game> expected = List.of(game1, game2);
+            when(gameRepo.findAll()).thenReturn(expected);
             //WHEN
-            List<Game> result = gameService.getAllGames();
+            List<Game> actual = gameService.getAllGames();
             //THEN
             verify(gameRepo).findAll();
-            assertEquals(gamesList, result);
+            assertEquals(expected, actual);
         }
 
         @Test
         @DisplayName("should return an empty list if no games are saved")
         void getAllGamesIfListIsEmpty() {
             //GIVEN
-            List<Game> gamesList = List.of();
-            when(gameRepo.findAll()).thenReturn(gamesList);
+            List<Game> expected = List.of();
+            when(gameRepo.findAll()).thenReturn(expected);
             //WHEN
-            List<Game> result = gameService.getAllGames();
+            List<Game> actual = gameService.getAllGames();
             //THEN
             verify(gameRepo).findAll();
-            assertEquals(gamesList, result);
+            assertEquals(expected, actual);
         }
     }
 }

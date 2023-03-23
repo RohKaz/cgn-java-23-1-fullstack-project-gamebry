@@ -2,16 +2,17 @@ package com.github.rohkaz.service;
 
 import com.github.rohkaz.model.Game;
 import com.github.rohkaz.repository.GameRepo;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@AllArgsConstructor
+
+@RequiredArgsConstructor
 @Service
 public class GameService {
 
-    GameRepo gameRepo;
+    private final GameRepo gameRepo;
 
     public List<Game> getAllGames() {
         return gameRepo.findAll();

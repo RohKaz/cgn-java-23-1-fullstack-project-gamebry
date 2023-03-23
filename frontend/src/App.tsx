@@ -15,20 +15,14 @@ function App() {
                 setGame(response.data);
             })
             .catch(console.error);
-
     }
-
     useEffect(() => {
         getGames()
     }, []);
 
-
     return (
         <div className="App">
-
-
         <GameCardGallery games={game}/>
-
         </div>
     );
 }

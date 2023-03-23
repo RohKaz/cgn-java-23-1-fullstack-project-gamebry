@@ -39,7 +39,7 @@ class GameControllerTest {
         @Test
         @DirtiesContext
         @DisplayName("should return all games that are saved in the list")
-        void getAllGamesIfListIsNotEmpty() throws Exception {
+        void whenGetAllGamesAndListIsNotEmpty_thenReturnListWith200OK() throws Exception {
             gameRepo.save(game1);
             gameRepo.save(game2);
             mockMvc.perform(MockMvcRequestBuilders.get("/api/games"))
@@ -63,7 +63,7 @@ class GameControllerTest {
         @Test
         @DirtiesContext
         @DisplayName("should return an empty list if no games are saved")
-        void getAllGamesIfListIsEmpty() throws Exception {
+        void whenGetAllGamesAndListIsEmpty_thenReturnEmptyListWith200OK() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.get("/api/games"))
                     .andExpect(status().isOk())
                     .andExpect(content().json("[]"));
