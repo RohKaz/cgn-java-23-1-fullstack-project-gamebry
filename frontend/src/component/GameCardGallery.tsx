@@ -1,6 +1,5 @@
 import {Game} from "../model/Game";
 import GameCard from "./GameCard";
-import "./GameCardGallery.css"
 import {Box} from "@mui/material";
 
 type GameCardGalleryProps = {
@@ -20,17 +19,13 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "flex-start",
             alignContent: "center",
             border: 1,
             borderColor: "black",
             backgroundColor: "#1f345c",
-
-
         }}>
-
             {games}
-
         </Box>
     )
 }

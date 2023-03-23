@@ -5,7 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import {CardActionArea} from '@mui/material';
 import {Game} from "../model/Game";
-import "./GameCard.css"
 
 type GameCardProps = {
     game: Game;
@@ -19,43 +18,40 @@ export default function GameCard(props: GameCardProps) {
             height: 250,
             padding: 2,
             margin: 4,
-            border: 2,
+            border: 3,
             borderColor: "black",
-            borderRadius: 4,
+            borderRadius: 6,
             display: "flex",
             flexDirection: "column",
-            alignItems: "center",
+            alignContent: "end",
+            alignItems: "end",
             textAlign: "center",
-            backgroundImage: ""
+            backgroundImage: "",
+            backgroundColor: "#545658"
 
         }}>
 
-            <CardActionArea>
+            <CardActionArea sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+            }}>
                 <CardMedia
                     component="img"
-                    height="80"
-                    width="80"
                     image=""
                     alt="Here should be a cover image of the game"
                 />
                 <CardContent>
                     <Typography
-                        gutterBottom variant="h5"
                         component="div"
                         sx={{
-                            alignContent: "bottom",
+                            mt: 20,
                             textAlign: "left",
-                        }
-
-                        }>
-
-                        <p>
-                            {props.game.gameTitle}
-                        </p>
-
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-
+                            fontSize: 15,
+                            fontWeight: "bold",
+                            fontColor: "white",
+                        }}>
+                        {props.game.gameTitle}
                     </Typography>
                 </CardContent>
             </CardActionArea>
