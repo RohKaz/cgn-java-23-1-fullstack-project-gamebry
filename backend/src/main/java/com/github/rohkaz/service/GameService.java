@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 
 @RequiredArgsConstructor
@@ -17,9 +16,5 @@ public class GameService {
 
     public List<Game> getAllGames() {
         return gameRepo.findAll();
-    }
-
-    public Game getGameByID(String id) {
-        return gameRepo.findById(id).orElseThrow(NoSuchElementException::new);
     }
 }
