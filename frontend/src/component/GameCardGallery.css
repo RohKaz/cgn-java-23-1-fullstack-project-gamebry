@@ -1,13 +1,31 @@
-.game-card-gallery {
+{
+    display: flex
+;
+    flex-direction: row
+;
+    flex-wrap: wrap
+;
+    align-items: center
+;
+    align-content: center
+;
+    justify-content: center
+;
+    width: 100%
+;
+    background-color: white
+;
+    border: 1px solid black
+;
+}
+
+.my-custom-class {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    background-color: white;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+.my-custom-class .game-card {
+    margin-bottom: 20px;
 }

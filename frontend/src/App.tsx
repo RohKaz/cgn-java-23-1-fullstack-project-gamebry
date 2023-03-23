@@ -26,7 +26,8 @@ function App() {
     return (
         <div className="App">
 
-            <GameCardGallery games={game}/>
+
+        <GameCardGallery games={game}/>
 
         </div>
     );
