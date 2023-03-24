@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {CardActionArea} from '@mui/material';
+import {CardActionArea, Link, Tooltip, Zoom} from '@mui/material';
 import {Game} from "../model/Game";
 
 type GameCardProps = {
@@ -48,7 +48,14 @@ export default function GameCard(props: GameCardProps) {
                             fontSize: 15,
                             fontWeight: "bold",
                         }}>
-                        {props.game.gameTitle}
+                        <Tooltip TransitionComponent={Zoom} title={"Go to " + props.game.gameTitle} followCursor={true}>
+                            <Link href={"/games/" + props.game.gameId}
+                                  sx={{
+                                      color: "black",
+                                      fontWeight: "bold",
+                                      textDecoration: "none",
+                                  }}>{props.game.gameTitle}</Link>
+                        </Tooltip>
                     </Typography>
                 </CardContent>
             </CardActionArea>
