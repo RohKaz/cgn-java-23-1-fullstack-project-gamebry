@@ -19,7 +19,7 @@ public class GameService {
         return gameRepo.findAll();
     }
 
-    public Game getGameByID(String id) {
-        return gameRepo.findById(id).orElseThrow(NoSuchElementException::new);
+    public Game getGameByID(String gameId) {
+        return gameRepo.findById(gameId).orElseThrow(NoSuchElementException::new);
     }
 }

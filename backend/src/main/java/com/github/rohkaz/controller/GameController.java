@@ -22,9 +22,9 @@ public class GameController {
         return gameService.getAllGames();
     }
 
-    @GetMapping("/games/{id}")
-    public Game getGameByID(@PathVariable String id) {
-        return gameService.getGameByID(id);
+    @GetMapping("/games/{gameId}")
+    public Game getGameByID(@PathVariable String gameId) {
+        return gameService.getGameByID(gameId);
     }
 }
 

@@ -28,9 +28,7 @@ export default function GameCard(props: GameCardProps) {
             textAlign: "center",
             backgroundImage: "",
             backgroundColor: "#545658"
-
         }}>
-
             <CardActionArea sx={{
                 height: "100%",
                 display: "flex",
@@ -49,7 +47,6 @@ export default function GameCard(props: GameCardProps) {
                             textAlign: "left",
                             fontSize: 15,
                             fontWeight: "bold",
-                            fontColor: "white",
                         }}>
                         {props.game.gameTitle}
                     </Typography>

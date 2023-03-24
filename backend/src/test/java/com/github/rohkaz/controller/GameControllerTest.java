@@ -80,7 +80,7 @@ class GameControllerTest {
         void whenGetGameByIDAndGameExists_thenReturnGameWith200OK() throws Exception {
             gameRepo.save(game1);
             gameRepo.save(game2);
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/games/1"))
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/games/" + game1.gameId()))
                     .andExpect(status().isOk())
                     .andExpect(content().json("""
                             {
