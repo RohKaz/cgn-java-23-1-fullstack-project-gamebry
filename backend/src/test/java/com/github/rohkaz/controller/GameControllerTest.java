@@ -70,4 +70,25 @@ class GameControllerTest {
 
         }
     }
+
+    @Nested
+    @DisplayName("testing getGameByID - api/games/{id}")
+    class testGetGameByID {
+        @Test
+        @DirtiesContext
+        @DisplayName("should return the game with the given id")
+        void whenGetGameByIDAndGameExists_thenReturnGameWith200OK() throws Exception {
+            gameRepo.save(game1);
+            gameRepo.save(game2);
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/games/1"))
+                    .andExpect(status().isOk())
+                    .andExpect(content().json("""
+                            {
+                                "gameId": "1",
+                                "gameTitle": "EU4",
+                                "gameDescription": "An awesome strategy game simulating politics, economics, and warfare"
+                            }
+                            """));
+        }
+    }
 }
