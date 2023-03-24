@@ -2,12 +2,10 @@ package com.github.rohkaz.service;
 
 import com.github.rohkaz.model.Game;
 import com.github.rohkaz.repository.GameRepo;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -56,6 +54,43 @@ class GameServiceTest {
             //THEN
             verify(gameRepo).findAll();
             assertEquals(expected, actual);
+        }
+    }
+
+    @Nested
+    @DisplayName("testing getGameByID")
+    class getGameByIDTests {
+
+        @BeforeEach
+        public void setup() {
+            gameRepo = mock(GameRepo.class);
+            gameService = new GameService(gameRepo);
+            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare");
+            game2 = new Game("2", "TESV", "The best RPG ever made");
+        }
+
+        @Test
+        @DisplayName("should return the game with the given id")
+        void getGameByIDIfGameIDExists() {
+            //GIVEN
+            Game expected = game1;
+            when(gameRepo.findById("1")).thenReturn(Optional.of(expected));
+            //WHEN
+            Game actual = gameService.getGameByID("1");
+            //THEN
+            verify(gameRepo).findById("1");
+            assertEquals(expected, actual);
+        }
+
+        @Test
+        @DisplayName("should throw an exception if no game with the given id exists")
+        void getGameByIDIfGameIDDoesNotExist_throwExceptionInstead() {
+            //GIVEN
+            when(gameRepo.findById("3")).thenReturn(Optional.empty());
+            //WHEN
+            Assertions.assertThrows(java.util.NoSuchElementException.class, () -> gameService.getGameByID("3"));
+            //THEN
+            verify(gameRepo).findById("3");
         }
     }
 }
