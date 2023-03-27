@@ -61,7 +61,7 @@ export default function GameCardDetailsPage() {
                     marginTop: 2,
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={"http://1.bp.blogspot.com/-yjm45McKLL4/UH3VFZiKweI/AAAAAAAABaQ/mpeVscC0GiA/s1600/Skyrim+-+Cover.jpg"}
+                     src={"https://1.bp.blogspot.com/-yjm45McKLL4/UH3VFZiKweI/AAAAAAAABaQ/mpeVscC0GiA/s1600/Skyrim+-+Cover.jpg"}
                 />
                 <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
                       component={"nav"}>
