@@ -16,6 +16,8 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
     return (
         <Box sx={{
             display: "flex",
+            minHeight: "fit-content",
+            maxHeight: "100%",
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: "center",
