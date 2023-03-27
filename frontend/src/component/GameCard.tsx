@@ -31,7 +31,6 @@ export default function GameCard(props: GameCardProps) {
                         sx={{
                             maxHeight: 220,
                             width: 180,
-                            border: 2,
                         }}
                     />
                     <CardContent sx={{
