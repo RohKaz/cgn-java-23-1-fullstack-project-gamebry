@@ -13,6 +13,8 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.List;
+
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -29,8 +31,8 @@ class GameControllerTest {
 
     @BeforeEach
     void setup() {
-        game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare");
-        game2 = new Game("2", "TESV", "The best RPG ever made");
+        game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"));
+        game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"));
     }
 
     @Nested
@@ -49,12 +51,20 @@ class GameControllerTest {
                                 {
                                     "gameId": "1",
                                     "gameTitle": "EU4",
-                                    "gameDescription": "An awesome strategy game simulating politics, economics, and warfare"
+                                    "gameDescription": "An awesome strategy game simulating politics, economics, and warfare",
+                                    "gameDeveloper": "Paradox",
+                                    "gameReleaseDate": "2013-11-13",
+                                    "gamePlatforms": ["PC"],
+                                    "gameGenres": ["Strategy", "Historical"]
                                 },
                                 {
                                     "gameId": "2",
                                     "gameTitle": "TESV",
-                                    "gameDescription": "The best RPG ever made"
+                                    "gameDescription": "The best RPG ever made",
+                                    "gameDeveloper": "Bethesda",
+                                    "gameReleaseDate": "2011-11-11",
+                                    "gamePlatforms": ["PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"],
+                                    "gameGenres": ["RPG", "Fantasy"]
                                 }
                             ]
                             """));
@@ -86,7 +96,11 @@ class GameControllerTest {
                             {
                                 "gameId": "1",
                                 "gameTitle": "EU4",
-                                "gameDescription": "An awesome strategy game simulating politics, economics, and warfare"
+                                "gameDescription": "An awesome strategy game simulating politics, economics, and warfare",
+                                "gameDeveloper": "Paradox",
+                                "gameReleaseDate": "2013-11-13",
+                                "gamePlatforms": ["PC"],
+                                "gameGenres": ["Strategy", "Historical"]
                             }
                             """));
         }

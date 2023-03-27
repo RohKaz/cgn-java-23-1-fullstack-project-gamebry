@@ -26,8 +26,8 @@ class GameServiceTest {
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare");
-            game2 = new Game("2", "TESV", "The best RPG ever made");
+            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"));
+            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"));
         }
 
         @Test
@@ -65,8 +65,8 @@ class GameServiceTest {
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare");
-            game2 = new Game("2", "TESV", "The best RPG ever made");
+            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"));
+            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"));
         }
 
         @Test
