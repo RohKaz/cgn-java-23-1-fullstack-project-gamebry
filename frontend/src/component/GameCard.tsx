@@ -36,7 +36,6 @@ export default function GameCard(props: GameCardProps) {
                     />
                     <CardContent sx={{
                         color: "white",
-
                     }}>
                         {props.game.gameTitle}
                     </CardContent>
