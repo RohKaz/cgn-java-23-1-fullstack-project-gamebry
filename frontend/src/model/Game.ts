@@ -6,5 +6,4 @@ export type Game = {
     gameReleaseDate: string;
     gamePlatforms: string[];
     gameGenres: string[];
-
 }
