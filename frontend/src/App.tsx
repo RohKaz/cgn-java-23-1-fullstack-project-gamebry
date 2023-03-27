@@ -5,8 +5,6 @@ import axios from "axios";
 import GameCardGallery from "./component/GameCardGallery";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import GameCardDetailsPage from "./component/GameCardDetailsPage";
-import {Slide} from "@mui/material";
-
 
 function App() {
 
@@ -24,14 +22,12 @@ function App() {
     }, []);
 
     return (
-        <div className="App">
+        <div className={"App"}>
             <BrowserRouter>
-                <Slide>
-                    <Routes>
-                        <Route path={"/"} element={<GameCardGallery games={game}/>}/>
-                        <Route path={"/games/:gameId"} element={<GameCardDetailsPage/>}/>
-                    </Routes>
-                </Slide>
+                <Routes>
+                    <Route path={"/"} element={<GameCardGallery games={game}/>}/>
+                    <Route path={"/games/:gameId"} element={<GameCardDetailsPage/>}/>
+                </Routes>
             </BrowserRouter>
         </div>
     );
