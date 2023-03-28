@@ -14,7 +14,8 @@ public record Game(
         String gameDeveloper,
         String gameReleaseDate,
         List<String> gamePlatforms,
-        List<String> gameGenres
+        List<String> gameGenres,
+        String gameCover
 
 ) {
 }
