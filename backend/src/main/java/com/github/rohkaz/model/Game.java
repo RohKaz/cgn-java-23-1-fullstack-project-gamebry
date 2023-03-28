@@ -16,6 +16,5 @@ public record Game(
         List<String> gamePlatforms,
         List<String> gameGenres,
         String gameCover
-
 ) {
 }

@@ -26,8 +26,8 @@ class GameServiceTest {
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"));
-            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"));
+            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg");
+            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg");
         }
 
         @Test
@@ -65,8 +65,8 @@ class GameServiceTest {
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"));
-            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"));
+            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "\"https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg\"");
+            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "\"https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg\"");
         }
 
         @Test
