@@ -48,20 +48,21 @@ export default function GameCardDetailsPage() {
             //1f2a4d
         }}>
             <Typography sx={{
-                fontSize: 40,
+                fontSize: 25,
                 color: "white",
                 textAlign: "left",
             }}>
                 <div className={"game-title"}>{details.gameTitle}</div>
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
-                    height: 200,
-                    width: 320,
+                    height: 250,
+                    width: 220,
                     display: "flex",
                     marginTop: 2,
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={"https://1.bp.blogspot.com/-yjm45McKLL4/UH3VFZiKweI/AAAAAAAABaQ/mpeVscC0GiA/s1600/Skyrim+-+Cover.jpg"}
+                     src={details.gameCover}
+                    //src={"https://1.bp.blogspot.com/-yjm45McKLL4/UH3VFZiKweI/AAAAAAAABaQ/mpeVscC0GiA/s1600/Skyrim+-+Cover.jpg"}
                 />
                 <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
                       component={"nav"}>
