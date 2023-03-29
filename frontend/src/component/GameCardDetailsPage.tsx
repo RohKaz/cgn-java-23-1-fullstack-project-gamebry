@@ -28,7 +28,7 @@ export default function GameCardDetailsPage() {
                 setDetails(response.data);
                 console.log(details);
             }).catch((error) => console.error(error));
-    }, [requestURL]);
+    }, [details, requestURL]);
 
     if (!details) {
         return <h1>NO DATA</h1>;
