@@ -1,6 +1,7 @@
 package com.github.rohkaz.controller;
 
 import com.github.rohkaz.gamecardmodel.GameCardDetailsModel;
+import com.github.rohkaz.model.GameDTO;
 import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.webclient.RawgApiService;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +31,7 @@ public class GameController {
     }
 
     @PostMapping("/games")
-    public Game addGame(@RequestBody Game game) {
+    public Game addGame(@RequestBody GameDTO game) {
         return gameService.addGame(game);
     }
 }
