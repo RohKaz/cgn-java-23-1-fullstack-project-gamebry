@@ -26,7 +26,6 @@ export default function GameCard(props: GameCardProps) {
                 }}>
                     <CardMedia
                         component="img"
-                        //image="https://blog.polaris64.net/post/skyrim-is-released/cover.jpg"
                         src={props.game.gameCover}
                         alt="Here should be a cover image of the game"
                         sx={{
