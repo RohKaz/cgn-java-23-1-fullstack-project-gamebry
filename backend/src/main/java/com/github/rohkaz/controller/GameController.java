@@ -35,6 +35,3 @@ public class GameController {
         return gameService.addGame(game);
     }
 }
-
-
-
