@@ -30,8 +30,10 @@ public class GameController {
         return rawgApiService.getGameById(id);
     }
 
-    @PostMapping("/games")
+    @PostMapping("/favorites")
     public Game addGame(@RequestBody GameDTO game) {
         return gameService.addGame(game);
     }
+
+
 }
