@@ -4,6 +4,7 @@ import axios from "axios";
 import GameCardGallery from "./component/GameCardGallery";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import GameCardDetailsPage from "./component/GameCardDetailsPage";
+import AppHeader from "./component/AppHeader";
 
 function App() {
 
@@ -23,6 +24,9 @@ function App() {
 
     return (
         <div className={"App"}>
+            <header>
+                <AppHeader/>
+            </header>
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<GameCardGallery games={game}/>}/>

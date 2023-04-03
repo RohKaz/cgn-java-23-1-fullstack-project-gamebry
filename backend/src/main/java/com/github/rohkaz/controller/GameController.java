@@ -5,7 +5,10 @@ import com.github.rohkaz.model.GameDTO;
 import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.webclient.RawgApiService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -29,11 +32,4 @@ public class GameController {
     public GameCardDetailsModel getGameById(@PathVariable int id) {
         return rawgApiService.getGameById(id);
     }
-
-    @PostMapping("/favorites")
-    public Game addGame(@RequestBody GameDTO game) {
-        return gameService.addGame(game);
-    }
-
-
 }
