@@ -1,6 +1,6 @@
 package com.github.rohkaz.controller;
 
-import com.github.rohkaz.model.Game;
+import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.repository.GameRepo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -20,19 +20,19 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class GameControllerTest {
+class GameCardModelControllerTest {
 
     @Autowired
     GameRepo gameRepo;
     @Autowired
     MockMvc mockMvc;
 
-    Game game1, game2;
+    GameCardModel gameCardModel1, gameCardModel2;
 
     @BeforeEach
     void setup() {
-        game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg");
-        game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg");
+        gameCardModel1 = new GameCardModel("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg");
+        gameCardModel2 = new GameCardModel("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg");
     }
 
     @Nested
@@ -42,8 +42,8 @@ class GameControllerTest {
         @DirtiesContext
         @DisplayName("should return all games that are saved in the list")
         void whenGetAllGamesAndListIsNotEmpty_thenReturnListWith200OK() throws Exception {
-            gameRepo.save(game1);
-            gameRepo.save(game2);
+            gameRepo.save(gameCardModel1);
+            gameRepo.save(gameCardModel2);
             mockMvc.perform(MockMvcRequestBuilders.get("/api/games"))
                     .andExpect(status().isOk())
                     .andExpect(content().json("""
@@ -85,14 +85,14 @@ class GameControllerTest {
 
     @Nested
     @DisplayName("testing getGameByID - api/games/{id}")
-    class testGetGameByID {
+    class testGetGameByIDCardModel {
         @Test
         @DirtiesContext
         @DisplayName("should return the game with the given id")
         void whenGetGameByIDAndGameExists_thenReturnGameWith200OK() throws Exception {
-            gameRepo.save(game1);
-            gameRepo.save(game2);
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/games/" + game1.gameId()))
+            gameRepo.save(gameCardModel1);
+            gameRepo.save(gameCardModel2);
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/games/" + gameCardModel1.gameId()))
                     .andExpect(status().isOk())
                     .andExpect(content().json("""
                             {

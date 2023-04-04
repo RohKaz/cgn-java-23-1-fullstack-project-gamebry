@@ -1,6 +1,6 @@
 package com.github.rohkaz.service;
 
-import com.github.rohkaz.model.Game;
+import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.repository.GameRepo;
 import org.junit.jupiter.api.*;
 
@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 
-class GameServiceTest {
+class GameCardModelServiceTest {
 
     GameService gameService;
     GameRepo gameRepo;
-    Game game1;
-    Game game2;
+    GameCardModel gameCardModel1;
+    GameCardModel gameCardModel2;
 
     @Nested
     @DisplayName("testing getAllGames")
@@ -26,18 +26,18 @@ class GameServiceTest {
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg");
-            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg");
+            gameCardModel1 = new GameCardModel("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg");
+            gameCardModel2 = new GameCardModel("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg");
         }
 
         @Test
         @DisplayName("should return all games that are saved in the list")
         void getAllGamesIfListIsNotEmpty() {
             //GIVEN
-            List<Game> expected = List.of(game1, game2);
+            List<GameCardModel> expected = List.of(gameCardModel1, gameCardModel2);
             when(gameRepo.findAll()).thenReturn(expected);
             //WHEN
-            List<Game> actual = gameService.getAllGames();
+            List<GameCardModel> actual = gameService.getAllGames();
             //THEN
             verify(gameRepo).findAll();
             assertEquals(expected, actual);
@@ -47,10 +47,10 @@ class GameServiceTest {
         @DisplayName("should return an empty list if no games are saved")
         void getAllGamesIfListIsEmpty() {
             //GIVEN
-            List<Game> expected = List.of();
+            List<GameCardModel> expected = List.of();
             when(gameRepo.findAll()).thenReturn(expected);
             //WHEN
-            List<Game> actual = gameService.getAllGames();
+            List<GameCardModel> actual = gameService.getAllGames();
             //THEN
             verify(gameRepo).findAll();
             assertEquals(expected, actual);
@@ -59,24 +59,24 @@ class GameServiceTest {
 
     @Nested
     @DisplayName("testing getGameByID")
-    class getGameByIDTests {
+    class getGameByIDTestsCardModel {
 
         @BeforeEach
         public void setup() {
             gameRepo = mock(GameRepo.class);
             gameService = new GameService(gameRepo);
-            game1 = new Game("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "\"https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg\"");
-            game2 = new Game("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "\"https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg\"");
+            gameCardModel1 = new GameCardModel("1", "EU4", "An awesome strategy game simulating politics, economics, and warfare", "Paradox", "2013-11-13", List.of("PC"), List.of("Strategy", "Historical"), "\"https://playidlegames.com/wp-content/uploads/2020/02/91FoEoDOEL._AC_SL1500_.jpg\"");
+            gameCardModel2 = new GameCardModel("2", "TESV", "The best RPG ever made", "Bethesda", "2011-11-11", List.of("PC", "Xbox 360", "Xbox One", "Playstation 3", "Playstation 4", "Nintendo Switch"), List.of("RPG", "Fantasy"), "\"https://media.indiedb.com/cache/images/members/2/1709/1708407/thumb_620x2000/image.37.jpg\"");
         }
 
         @Test
         @DisplayName("should return the game with the given id")
         void getGameByIDIfGameIDExists() {
             //GIVEN
-            Game expected = game1;
+            GameCardModel expected = gameCardModel1;
             when(gameRepo.findById("1")).thenReturn(Optional.of(expected));
             //WHEN
-            Game actual = gameService.getGameByID("1");
+            GameCardModel actual = gameService.getGameByID("1");
             //THEN
             verify(gameRepo).findById("1");
             assertEquals(expected, actual);

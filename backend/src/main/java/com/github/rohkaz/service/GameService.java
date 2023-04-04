@@ -1,6 +1,6 @@
 package com.github.rohkaz.service;
 
-import com.github.rohkaz.model.Game;
+import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.repository.GameRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,11 +15,11 @@ public class GameService {
 
     private final GameRepo gameRepo;
 
-    public List<Game> getAllGames() {
+    public List<GameCardModel> getAllGames() {
         return gameRepo.findAll();
     }
 
-    public Game getGameByID(String gameId) {
+    public GameCardModel getGameByID(String gameId) {
         return gameRepo.findById(gameId).orElseThrow(NoSuchElementException::new);
     }
 }
