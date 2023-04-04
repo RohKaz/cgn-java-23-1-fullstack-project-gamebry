@@ -11,7 +11,7 @@ import {Category, ExpandLess, ExpandMore, Info, SportsEsports, SupervisedUserCir
 export default function GameCardDetailsPage() {
 
     const params = useParams();
-    const id: string | undefined = params.gameId;
+    const id: string | undefined = params.id;
 
     const [details, setDetails] = useState<Game | undefined>();
     const [open, setOpen] = useState(true);
@@ -19,7 +19,7 @@ export default function GameCardDetailsPage() {
         setOpen(!open);
     }
 
-    const requestURL: string = "/api/games/" + id
+    const requestURL: string = "/api/games/" + id + "?key=36c65ecc04c848268be4eb8b44bbce99"
 
     useEffect(() => {
         axios
@@ -49,7 +49,7 @@ export default function GameCardDetailsPage() {
                 color: "white",
                 textAlign: "left",
             }}>
-                <div className={"game-title"}>{details.title}</div>
+                <div className={"game-title"}>{details.name}</div>
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
                     height: 250,
@@ -58,7 +58,7 @@ export default function GameCardDetailsPage() {
                     marginTop: 2,
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={details.cover}
+                     src={details.background_image}
                 />
                 <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
                       component={"nav"}>
@@ -76,7 +76,7 @@ export default function GameCardDetailsPage() {
                                 <ListItemIcon>
                                     <AccessTime/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Release date: " + details.releaseDate}/>
+                                <ListItemText primary={"Release date: " + details.released}/>
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>

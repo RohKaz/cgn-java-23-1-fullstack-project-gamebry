@@ -12,6 +12,7 @@ import java.util.Objects;
 public class RawgApiService {
 
     private WebClient webClient = WebClient.create("https://api.rawg.io/api/");
+    private static GameCardModel gameCardModel;
     private static final String API_KEY = "36c65ecc04c848268be4eb8b44bbce99";
 
     public List<GameCardModel> getAllGames() {
@@ -23,7 +24,6 @@ public class RawgApiService {
                 .getBody();
         return allGamesResponse.results();
     }
-
     public List<GameCardModel> getNewAndUpcomingGames() {
         GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")

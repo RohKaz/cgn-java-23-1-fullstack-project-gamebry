@@ -1,7 +1,7 @@
 export type Game = {
     id: string;
-    title: string;
-    releaseDate: string;
-    cover: string;
-    rating: string
+    name: string;
+    released: string;
+    background_image: string;
+    metacritic: string
 }
