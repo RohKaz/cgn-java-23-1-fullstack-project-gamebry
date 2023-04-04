@@ -31,6 +31,11 @@ public class GameController {
     public String getNewlyReleasedGames() {
         return rawgApiService.getNewlyReleasedGames();
     }
+
+    @GetMapping("/games/all")
+    public String getAllGames() {
+        return rawgApiService.getAllGames();
+    }
 }
 
 
