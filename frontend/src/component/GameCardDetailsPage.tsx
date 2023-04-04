@@ -49,7 +49,7 @@ export default function GameCardDetailsPage() {
                 color: "white",
                 textAlign: "left",
             }}>
-                <div className={"game-title"}>{details.gameTitle}</div>
+                <div className={"game-title"}>{details.title}</div>
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
                     height: 250,
@@ -58,7 +58,7 @@ export default function GameCardDetailsPage() {
                     marginTop: 2,
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={details.gameCover}
+                     src={details.cover}
                 />
                 <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
                       component={"nav"}>
@@ -76,25 +76,25 @@ export default function GameCardDetailsPage() {
                                 <ListItemIcon>
                                     <AccessTime/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Release date: " + details.gameReleaseDate}/>
+                                <ListItemText primary={"Release date: " + details.releaseDate}/>
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <SupervisedUserCircle/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Publisher: " + details.gameDeveloper}/>
+                                <ListItemText primary={"Publisher: "}/>
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <SportsEsports/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Platforms: " + details.gamePlatforms}/>
+                                <ListItemText primary={"Platforms: "}/>
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <Category/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Genres: " + details.gameGenres}/>
+                                <ListItemText primary={"Genres: "}/>
                             </ListItemButton>
                         </List>
                     </Collapse>
@@ -104,7 +104,7 @@ export default function GameCardDetailsPage() {
                 </Typography>
                 <Divider orientation={"horizontal"} sx={{border: 1, borderStyle: "", color: "black"}}/>
                 <Typography sx={{fontSize: 10, color: "white", fontWeight: "bold", textAlign: "start",}}>
-                    <p>{details.gameDescription}</p>
+                    <p>Game Description</p>
                 </Typography>
             </Typography>
         </Box>

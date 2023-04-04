@@ -11,7 +11,7 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
 
     const games = props.games.map((game) => {
         return (
-            <GameCard game={game} key={game.gameId}/>
+            <GameCard game={game} key={game.id}/>
         )
     })
     return (

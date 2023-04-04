@@ -9,15 +9,16 @@ function App() {
 
     const [game, setGame] = useState<Game[]>([]);
 
-    function getGames() {
-        axios.get("/api/games")
+    function getNewAndUpcomingGames() {
+        axios.get("/api/games/new")
             .then(response => {
                 setGame(response.data);
             })
             .catch(console.error);
     }
+
     useEffect(() => {
-        getGames()
+        getNewAndUpcomingGames()
     }, []);
 
     return (
@@ -25,7 +26,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<GameCardGallery games={game}/>}/>
-                    <Route path={"/games/:gameId"} element={<GameCardDetailsPage/>}/>
+                    <Route path={"/games/:id"} element={<GameCardDetailsPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

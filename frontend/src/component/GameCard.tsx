@@ -12,8 +12,8 @@ type GameCardProps = {
 export default function GameCard(props: GameCardProps) {
 
     return (
-        <Tooltip TransitionComponent={Zoom} title={"Go to " + props.game.gameTitle} followCursor={true}>
-            <Link href={"/games/" + props.game.gameId} sx={{textDecoration: "none"}}>
+        <Tooltip TransitionComponent={Zoom} title={"Go to " + props.game.title} followCursor={true}>
+            <Link href={"/games/" + props.game.id} sx={{textDecoration: "none"}}>
                 <Card sx={{
                     width: 180,
                     minHeight: 280,
@@ -26,7 +26,7 @@ export default function GameCard(props: GameCardProps) {
                 }}>
                     <CardMedia
                         component="img"
-                        src={props.game.gameCover}
+                        src={props.game.cover}
                         alt="Here should be a cover image of the game"
                         sx={{
                             maxHeight: 220,
@@ -36,7 +36,7 @@ export default function GameCard(props: GameCardProps) {
                     <CardContent sx={{
                         color: "white",
                     }}>
-                        {props.game.gameTitle}
+                        {props.game.title}
                     </CardContent>
                 </Card>
             </Link>
