@@ -15,12 +15,12 @@ import java.util.List;
 public class GameController {
     private final RawgApiService rawgApiService;
 
-    @GetMapping("/games")
+    @GetMapping("/games/new")
     public String getNewlyReleasedGames() {
         return rawgApiService.getNewlyReleasedGames();
     }
 
-    @GetMapping("/games/all")
+    @GetMapping("/games")
     public List<GameCardModel> getAllGames() {
         return rawgApiService.getAllGames();
     }
