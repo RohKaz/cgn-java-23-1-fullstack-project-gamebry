@@ -7,6 +7,6 @@ public record GameCardModel(
         @JsonProperty("name") String title,
         @JsonProperty("released") String releaseDate,
         @JsonProperty("background_image") String cover,
-        @JsonProperty("rating") String rating
+        @JsonProperty("metacritic") String rating
 ) {
 }
