@@ -9,7 +9,7 @@ import java.util.Objects;
 public class RawgApiService {
 
     private WebClient webClient = WebClient.create("https://api.rawg.io/api/");
-    String API_KEY = "36c65ecc04c848268be4eb8b44bbce99";
+    private static final String API_KEY = "36c65ecc04c848268be4eb8b44bbce99";
 
     public String getAllGames() {
         String allGamesResponse = Objects.requireNonNull(webClient.get()
