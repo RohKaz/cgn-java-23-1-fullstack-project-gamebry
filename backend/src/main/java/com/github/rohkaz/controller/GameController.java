@@ -16,8 +16,8 @@ public class GameController {
     private final RawgApiService rawgApiService;
 
     @GetMapping("/games/new")
-    public String getNewlyReleasedGames() {
-        return rawgApiService.getNewlyReleasedGames();
+    public List<GameCardModel> getNewAndUpcomingGames() {
+        return rawgApiService.getNewAndUpcomingGames();
     }
 
     @GetMapping("/games")

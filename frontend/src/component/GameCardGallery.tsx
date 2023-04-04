@@ -35,7 +35,7 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
                 textAlign: "left",
                 color: "white",
             }}>
-                Upcoming releases
+                New and upcoming releases
             </Typography>
             {games}
         </Box>

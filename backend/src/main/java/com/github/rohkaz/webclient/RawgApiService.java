@@ -24,14 +24,14 @@ public class RawgApiService {
         return allGamesResponse.results();
     }
 
-    public String getNewlyReleasedGames() {
-        String newReleasesResponse = Objects.requireNonNull(webClient.get()
-                        .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2023-04-20")
+    public List<GameCardModel> getNewAndUpcomingGames() {
+        GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
+                        .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
                         .retrieve()
-                        .toEntity(String.class)
+                        .toEntity(GameCardModelResponse.class)
                         .block())
                 .getBody();
 
-        return newReleasesResponse;
+        return newAndUpcomingGamesResponse.results();
     }
 }
