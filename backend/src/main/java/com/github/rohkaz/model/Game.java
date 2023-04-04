@@ -8,13 +8,13 @@ import java.util.List;
 @Document("game")
 public record Game(
         @Id
-        String gameId,
-        String gameTitle,
-        String gameDescription,
-        String gameDeveloper,
-        String gameReleaseDate,
-        List<String> gamePlatforms,
-        List<String> gameGenres,
-        String gameCover
+        String id,
+        String title,
+        String description,
+        String publisher,
+        String releaseDate,
+        List<String> platforms,
+        List<String> genres,
+        String cover
 ) {
 }
