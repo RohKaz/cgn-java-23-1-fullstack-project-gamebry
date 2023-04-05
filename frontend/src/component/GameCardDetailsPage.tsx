@@ -52,7 +52,6 @@ export default function GameCardDetailsPage() {
         )
     });
 
-
     return (
         <Box sx={{
             display: "flex",
@@ -126,7 +125,7 @@ export default function GameCardDetailsPage() {
                 </Typography>
                 <Divider orientation={"horizontal"} sx={{border: 1, borderStyle: "", color: "black"}}/>
                 <Typography sx={{fontSize: 10, color: "white", fontWeight: "bold", textAlign: "start",}}>
-                    <p>Game Description</p>
+                    {details.description}
                 </Typography>
             </Typography>
         </Box>
