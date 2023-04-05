@@ -1,5 +1,6 @@
 import {Genre} from "./Genre";
 import {Publisher} from "./Publisher";
+import {Platform} from "./Platform";
 
 export type GameCardDetailsModel = {
     id: number;
@@ -9,6 +10,7 @@ export type GameCardDetailsModel = {
     publishers: Publisher[];
     genres: Genre[];
     cover: string;
-    rating: number
+    rating: number;
+    platforms: Platform[];
 
 }

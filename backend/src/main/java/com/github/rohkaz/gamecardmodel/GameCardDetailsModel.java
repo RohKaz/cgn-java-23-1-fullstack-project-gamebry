@@ -14,6 +14,7 @@ public record GameCardDetailsModel(
         List<Publisher> publishers,
         List<Genre> genres,
         @JsonAlias("background_image") String cover,
-        @JsonAlias("metacritic") int rating
+        @JsonAlias("metacritic") int rating,
+        List<Platform> platforms
 ) {
 }

@@ -34,6 +34,25 @@ export default function GameCardDetailsPage() {
         return <h1>NO DATA</h1>;
     }
 
+    const genre = details.genres.map((genre) => {
+        return (
+            <ListItemText key={genre.id} primary={" " + genre.name + ","}/>
+        )
+    });
+
+    const publisher = details.publishers.map((publisher) => {
+        return (
+            <ListItemText key={publisher.id} primary={" " + publisher.name + ","}/>
+        )
+    });
+
+    const platform = details.platforms.map((platform) => {
+        return (
+            <ListItemText key={platform.id} primary={" " + platform.name + ","}/>
+        )
+    });
+
+
     return (
         <Box sx={{
             display: "flex",
@@ -83,23 +102,21 @@ export default function GameCardDetailsPage() {
                                     <SupervisedUserCircle/>
                                 </ListItemIcon>
                                 <ListItemText primary={"Publisher: "}/>
+                                {publisher}
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <SportsEsports/>
                                 </ListItemIcon>
                                 <ListItemText primary={"Platforms: "}/>
+                                {platform}
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
                                     <Category/>
                                 </ListItemIcon>
                                 <ListItemText primary={"Genres: "}/>
-                                {
-                                    details.genres.map((genre) => {
-                                        return <ListItemText key={genre.id} primary={genre.name + ", "}/>
-                                    })
-                                }
+                                {genre}
                             </ListItemButton>
                         </List>
                     </Collapse>
