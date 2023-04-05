@@ -1,7 +1,9 @@
 package com.github.rohkaz.webclient;
 
+import com.github.rohkaz.gamecardmodel.GameCardDetailsModel;
 import com.github.rohkaz.gamecardmodel.GameCardModel;
 import com.github.rohkaz.gamecardmodel.GameCardModelResponse;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -13,7 +15,8 @@ public class RawgApiService {
 
     private WebClient webClient = WebClient.create("https://api.rawg.io/api/");
     private static GameCardModel gameCardModel;
-    private static final String API_KEY = "36c65ecc04c848268be4eb8b44bbce99";
+    @Value("${rawg.api.key}")
+    private String API_KEY;
 
     public List<GameCardModel> getAllGames() {
         GameCardModelResponse allGamesResponse = Objects.requireNonNull(webClient.get()
@@ -24,6 +27,17 @@ public class RawgApiService {
                 .getBody();
         return allGamesResponse.results();
     }
+
+    public GameCardDetailsModel getGameById(int id) {
+        GameCardDetailsModel gameCardModel = Objects.requireNonNull(webClient.get()
+                        .uri("/games/" + id + "?key=" + API_KEY)
+                        .retrieve()
+                        .toEntity(GameCardDetailsModel.class)
+                        .block())
+                .getBody();
+        return gameCardModel;
+    }
+
     public List<GameCardModel> getNewAndUpcomingGames() {
         GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
