@@ -16,7 +16,7 @@ public class RawgApiService {
     private WebClient webClient;
 
     public RawgApiService(
-            @Value("rawg.api.url") String url
+            @Value("${rawgapi.url}") String url
     ) {
         this.webClient = WebClient.create(url);
     }
