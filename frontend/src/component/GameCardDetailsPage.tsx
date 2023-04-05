@@ -19,7 +19,7 @@ export default function GameCardDetailsPage() {
         setOpen(!open);
     }
 
-    const requestURL: string = "/api/games/" + id + "?key=36c65ecc04c848268be4eb8b44bbce99"
+    const requestURL: string = "/api/games/" + id
 
     useEffect(() => {
         axios
@@ -28,7 +28,7 @@ export default function GameCardDetailsPage() {
                 setDetails(response.data);
                 console.log(details);
             }).catch((error) => console.error(error));
-    }, [details, requestURL]);
+    }, []);
 
     if (!details) {
         return <h1>NO DATA</h1>;
@@ -94,7 +94,12 @@ export default function GameCardDetailsPage() {
                                 <ListItemIcon>
                                     <Category/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Genres: " + details.genres}/>
+                                <ListItemText primary={"Genres: "}/>
+                                {
+                                    details.genres.map((genre) => {
+                                        return <ListItemText key={genre.id} primary={genre.name + ", "}/>
+                                    })
+                                }
                             </ListItemButton>
                         </List>
                     </Collapse>
