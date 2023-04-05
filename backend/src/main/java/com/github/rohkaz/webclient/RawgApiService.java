@@ -13,7 +13,14 @@ import java.util.Objects;
 @Service
 public class RawgApiService {
 
-    private WebClient webClient = WebClient.create("https://api.rawg.io/api/");
+    private WebClient webClient;
+
+    public RawgApiService(
+            @Value("rawg.api.url") String url
+    ) {
+        this.webClient = WebClient.create(url);
+    }
+
     private static GameCardModel gameCardModel;
     @Value("${rawg.api.key}")
     private String API_KEY;
