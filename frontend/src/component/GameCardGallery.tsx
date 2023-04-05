@@ -1,10 +1,10 @@
-import {Game} from "../model/Game";
+import {GameCardModel} from "../model/GameCardModel";
 import GameCard from "./GameCard";
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
 
 type GameCardGalleryProps = {
-    games: Game[];
+    games: GameCardModel[];
 }
 
 export default function GameCardGallery(props: GameCardGalleryProps) {

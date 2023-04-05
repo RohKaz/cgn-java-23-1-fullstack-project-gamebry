@@ -3,10 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import {Link, Tooltip, Zoom} from '@mui/material';
-import {Game} from "../model/Game";
+import {GameCardModel} from "../model/GameCardModel";
 
 type GameCardProps = {
-    game: Game;
+    game: GameCardModel;
 }
 
 export default function GameCard(props: GameCardProps) {

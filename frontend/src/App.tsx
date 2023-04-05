@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Game} from "./model/Game";
+import {GameCardModel} from "./model/GameCardModel";
 import axios from "axios";
 import GameCardGallery from "./component/GameCardGallery";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -7,7 +7,7 @@ import GameCardDetailsPage from "./component/GameCardDetailsPage";
 
 function App() {
 
-    const [game, setGame] = useState<Game[]>([]);
+    const [game, setGame] = useState<GameCardModel[]>([]);
 
     function getNewAndUpcomingGames() {
         axios.get("/api/games/new")

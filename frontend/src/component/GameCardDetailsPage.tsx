@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Game} from "../model/Game";
+import {GameCardDetailsModel} from "../model/GameCardDetailsModel";
 import {useParams} from "react-router-dom";
 import axios from "axios";
 import {Box, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
@@ -13,7 +13,7 @@ export default function GameCardDetailsPage() {
     const params = useParams();
     const id: string | undefined = params.id;
 
-    const [details, setDetails] = useState<Game | undefined>();
+    const [details, setDetails] = useState<GameCardDetailsModel | undefined>();
     const [open, setOpen] = useState(true);
     const handleClick = () => {
         setOpen(!open);
@@ -94,7 +94,7 @@ export default function GameCardDetailsPage() {
                                 <ListItemIcon>
                                     <Category/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Genres: "}/>
+                                <ListItemText primary={"Genres: " + details.genres}/>
                             </ListItemButton>
                         </List>
                     </Collapse>
