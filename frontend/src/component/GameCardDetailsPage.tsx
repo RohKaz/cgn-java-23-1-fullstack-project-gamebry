@@ -49,7 +49,7 @@ export default function GameCardDetailsPage() {
                 color: "white",
                 textAlign: "left",
             }}>
-                <div className={"game-title"}>{details.name}</div>
+                <div className={"game-title"}>{details.title}</div>
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
                     height: 250,
@@ -58,7 +58,7 @@ export default function GameCardDetailsPage() {
                     marginTop: 2,
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={details.background_image}
+                     src={details.cover}
                 />
                 <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
                       component={"nav"}>
@@ -76,7 +76,7 @@ export default function GameCardDetailsPage() {
                                 <ListItemIcon>
                                     <AccessTime/>
                                 </ListItemIcon>
-                                <ListItemText primary={"Release date: " + details.released}/>
+                                <ListItemText primary={"Release date: " + details.releaseDate}/>
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
