@@ -25,7 +25,7 @@ public class RawgApiService {
     @Value("${rawg.api.key}")
     private String API_KEY;
 
-    public List<GameCardModel> getAllGames() {
+    /*public List<GameCardModel> getAllGames() {
         GameCardModelResponse allGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY)
                         .retrieve()
@@ -33,6 +33,14 @@ public class RawgApiService {
                         .block())
                 .getBody();
         return allGamesResponse.results();
+    }*/
+
+    public List<GameCardModel> getAllGames() {
+        return Objects.requireNonNull(webClient.get()
+                .uri("/games?key=" + API_KEY)
+                .retrieve()
+                .bodyToMono(GameCardModelResponse.class)
+                .block()).results();
     }
 
     public GameCardDetailsModel getGameById(int id) {
