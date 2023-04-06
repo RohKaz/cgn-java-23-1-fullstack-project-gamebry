@@ -25,16 +25,6 @@ public class RawgApiService {
     @Value("${rawg.api.key}")
     private String API_KEY;
 
-    /*public List<GameCardModel> getAllGames() {
-        GameCardModelResponse allGamesResponse = Objects.requireNonNull(webClient.get()
-                        .uri("/games?key=" + API_KEY)
-                        .retrieve()
-                        .toEntity(GameCardModelResponse.class)
-                        .block())
-                .getBody();
-        return allGamesResponse.results();
-    }*/
-
     public List<GameCardModel> getAllGames() {
         return Objects.requireNonNull(webClient.get()
                 .uri("/games?key=" + API_KEY)
@@ -52,17 +42,6 @@ public class RawgApiService {
                 .getBody();
         return gameCardModel;
     }
-
-    /*public List<GameCardModel> getNewAndUpcomingGames() {
-        GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
-                        .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
-                        .retrieve()
-                        .toEntity(GameCardModelResponse.class)
-                        .block())
-                .getBody();
-
-        return newAndUpcomingGamesResponse.results();
-    }*/
 
     public List<GameCardModel> getNewAndUpcomingGames() {
         return Objects.requireNonNull(webClient.get()
