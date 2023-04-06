@@ -53,7 +53,7 @@ public class RawgApiService {
         return gameCardModel;
     }
 
-    public List<GameCardModel> getNewAndUpcomingGames() {
+    /*public List<GameCardModel> getNewAndUpcomingGames() {
         GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
                         .retrieve()
@@ -62,5 +62,13 @@ public class RawgApiService {
                 .getBody();
 
         return newAndUpcomingGamesResponse.results();
+    }*/
+
+    public List<GameCardModel> getNewAndUpcomingGames() {
+        return Objects.requireNonNull(webClient.get()
+                .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
+                .retrieve()
+                .bodyToMono(GameCardModelResponse.class)
+                .block()).results();
     }
 }
