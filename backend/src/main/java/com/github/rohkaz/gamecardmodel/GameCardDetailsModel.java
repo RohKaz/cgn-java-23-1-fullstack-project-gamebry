@@ -7,11 +7,10 @@ import java.util.List;
 
 public record GameCardDetailsModel(
 
+        @JsonProperty("description_raw") String description,
         int id,
         @JsonAlias("name") String title,
-        @JsonProperty("description_raw") String description,
         @JsonAlias("released") String releaseDate,
-
         List<Publisher> publishers,
         List<Genre> genres,
         @JsonAlias("background_image") String cover,

@@ -3,9 +3,9 @@ import {Publisher} from "./Publisher";
 import {Platform} from "./Platform";
 
 export type GameCardDetailsModel = {
+    description_raw: string;
     id: number;
     title: string;
-    description: string;
     releaseDate: string;
     publishers: Publisher[];
     genres: Genre[];

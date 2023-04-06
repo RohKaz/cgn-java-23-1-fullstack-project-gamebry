@@ -5,7 +5,7 @@ import axios from "axios";
 import {Box, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import AccessTime from "@mui/icons-material/AccessTime";
-import {Category, ExpandLess, ExpandMore, Info, SportsEsports, SupervisedUserCircle} from "@mui/icons-material";
+import {Category, ExpandLess, ExpandMore, Info, SupervisedUserCircle} from "@mui/icons-material";
 
 
 export default function GameCardDetailsPage() {
@@ -50,7 +50,7 @@ export default function GameCardDetailsPage() {
         <Box sx={{
             display: "flex",
             flexDirection: "",
-            height: "auto",
+            height: "fit-content",
             justifyContent: "left",
             textAlign: "left",
             padding: 6,
@@ -65,7 +65,7 @@ export default function GameCardDetailsPage() {
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
                     height: 250,
-                    width: 220,
+                    width: 350,
                     display: "flex",
                     marginTop: 2,
                 }}
@@ -99,12 +99,6 @@ export default function GameCardDetailsPage() {
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    <SportsEsports/>
-                                </ListItemIcon>
-                                <ListItemText primary={"Platforms: "}/>
-                            </ListItemButton>
-                            <ListItemButton>
-                                <ListItemIcon>
                                     <Category/>
                                 </ListItemIcon>
                                 <ListItemText primary={"Genres: "}/>
@@ -118,7 +112,7 @@ export default function GameCardDetailsPage() {
                 </Typography>
                 <Divider orientation={"horizontal"} sx={{border: 1, borderStyle: "", color: "black"}}/>
                 <Typography sx={{fontSize: 10, color: "white", fontWeight: "bold", textAlign: "start",}}>
-                    {details.description}
+                    <p>{details.description_raw}</p>
                 </Typography>
             </Typography>
         </Box>
