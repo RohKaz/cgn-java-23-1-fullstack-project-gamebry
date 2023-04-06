@@ -46,12 +46,6 @@ export default function GameCardDetailsPage() {
         )
     });
 
-    const platform = details.platforms.map((platform) => {
-        return (
-            <ListItemText key={platform.id} primary={" " + platform.name + ","}/>
-        )
-    });
-
     return (
         <Box sx={{
             display: "flex",
@@ -108,7 +102,6 @@ export default function GameCardDetailsPage() {
                                     <SportsEsports/>
                                 </ListItemIcon>
                                 <ListItemText primary={"Platforms: "}/>
-                                {platform}
                             </ListItemButton>
                             <ListItemButton>
                                 <ListItemIcon>

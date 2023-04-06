@@ -10,7 +10,6 @@ public record GameCardModel(
         @JsonAlias("released") String releaseDate,
         List<Genre> genres,
         @JsonAlias("background_image") String cover,
-        @JsonAlias("metacritic") int rating,
-        @JsonAlias("platforms") List<Platform> platforms
+        @JsonAlias("metacritic") int rating
 ) {
 }

@@ -35,7 +35,7 @@ public class IntegrationTestAPI {
 
     @DynamicPropertySource
     static void backendProperties(DynamicPropertyRegistry registry) {
-        registry.add("rawg.api.url", () -> mockWebServer.url("/").toString());
+        registry.add("rawgapi.url", () -> mockWebServer.url("/").toString());
     }
 
     @Test
@@ -49,15 +49,14 @@ public class IntegrationTestAPI {
                         "id": 1,
                         "name": "test",
                         "released": "2021-01-01",
-                        "genres": ["test"],
+                        "genres": [{"name": "test"}],
                         "background_image": "test",
                         "rating": 1,
-                        "platforms": ["test"]
+                        "platforms": [{"name": "test"}]
                         }
                         ]
                         }
                         """));
-
 
         mockMvc.perform(get("/api/games"))
                 .andExpect(status().isOk());
