@@ -25,7 +25,7 @@ public class RawgApiService {
     @Value("${rawg.api.key}")
     private String API_KEY;
 
-    public List<GameCardModel> getAllGames() throws NullPointerException {
+    public List<GameCardModel> getAllGames() {
         GameCardModelResponse allGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY)
                         .retrieve()
@@ -45,7 +45,7 @@ public class RawgApiService {
         return gameCardModel;
     }
 
-    public List<GameCardModel> getNewAndUpcomingGames() throws NullPointerException {
+    public List<GameCardModel> getNewAndUpcomingGames() {
         GameCardModelResponse newAndUpcomingGamesResponse = Objects.requireNonNull(webClient.get()
                         .uri("/games?key=" + API_KEY + "&dates=2023-01-01,2024-01-01")
                         .retrieve()
