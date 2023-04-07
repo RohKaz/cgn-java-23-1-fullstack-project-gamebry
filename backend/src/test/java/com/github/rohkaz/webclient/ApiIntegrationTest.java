@@ -67,4 +67,48 @@ class ApiIntegrationTest {
         mockWebServer.shutdown();
     }
 
+    @Test
+    void testGetNewAndUpcomingGames() throws Exception {
+        mockWebServer.enqueue(new MockResponse()
+                .setHeader("Content-Type", "application/json")
+                .setBody("""
+                        {
+                        "results": [
+                        {
+                        "id": 1,
+                        "name": "test",
+                        "released": "2021-01-01",
+                        "genres": [{"name": "test"}],
+                        "background_image": "test",
+                        "rating": 1,
+                        "platforms": [{"name": "test"}]
+                        }
+                        ]
+                        }
+                        """));
+
+        mockMvc.perform(get("/api/games/new"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void testGetGameById() throws Exception {
+        mockWebServer.enqueue(new MockResponse()
+                .setHeader("Content-Type", "application/json")
+                .setBody("""
+                        {
+                        "id": 1,
+                        "name": "test",
+                        "released": "2021-01-01",
+                        "genres": [{"name": "test"}],
+                        "background_image": "test",
+                        "rating": 1,
+                        "platforms": [{"name": "test"}]
+                        }
+                        """));
+
+        mockMvc.perform(get("/api/games/1"))
+                .andExpect(status().isOk());
+    }
+
 }
