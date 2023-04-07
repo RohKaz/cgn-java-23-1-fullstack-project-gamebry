@@ -34,17 +34,15 @@ export default function GameCardDetailsPage() {
         return <h1>NO DATA</h1>;
     }
 
-    const genre = details.genres.map((genre) => {
-        return (
-            <ListItemText key={genre.id} primary={" " + genre.name + ","}/>
-        )
-    });
+    const genre = details.genres.map((genre, index) => (
+        <ListItemText key={genre.id} primary={`${genre.name}${index !== details.genres.length - 1 ? ', ' : ''}`}/>
+    ));
 
-    const publisher = details.publishers.map((publisher) => {
-        return (
-            <ListItemText key={publisher.id} primary={" " + publisher.name + ","}/>
-        )
-    });
+    const publisher = details.publishers.map((publisher, index) => (
+        <ListItemText key={publisher.id}
+                      primary={`${publisher.name}${index !== details.publishers.length - 1 ? ', ' : ''}`}/>
+    ));
+
 
     return (
         <Box sx={{
@@ -55,6 +53,7 @@ export default function GameCardDetailsPage() {
             textAlign: "left",
             padding: 6,
             backgroundColor: "#1f345c",
+            alignContent: "left"
         }}>
             <Typography sx={{
                 fontSize: 25,
@@ -65,9 +64,9 @@ export default function GameCardDetailsPage() {
                 <Box component="img" sx={{
                     imageRendering: "pixelated",
                     height: 250,
-                    width: 350,
+                    width: 320,
                     display: "flex",
-                    marginTop: 2,
+                    marginTop: 2
                 }}
                      alt={"Here should be a cover image of the game"}
                      src={details.cover}
