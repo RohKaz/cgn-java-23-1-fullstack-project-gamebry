@@ -20,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class IntegrationTestAPI {
+class ApiIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -39,7 +39,7 @@ public class IntegrationTestAPI {
     }
 
     @Test
-    public void testGetAllGames() throws Exception {
+    void testGetAllGames() throws Exception {
         mockWebServer.enqueue(new MockResponse()
                 .setHeader("Content-Type", "application/json")
                 .setBody("""

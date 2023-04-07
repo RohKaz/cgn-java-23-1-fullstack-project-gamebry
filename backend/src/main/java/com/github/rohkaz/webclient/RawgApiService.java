@@ -21,7 +21,6 @@ public class RawgApiService {
         this.webClient = WebClient.create(url);
     }
 
-    private static GameCardModel gameCardModel;
     @Value("${rawg.api.key}")
     private String API_KEY;
 
@@ -34,13 +33,11 @@ public class RawgApiService {
     }
 
     public GameCardDetailsModel getGameById(int id) {
-        GameCardDetailsModel gameCardModel = Objects.requireNonNull(webClient.get()
-                        .uri("/games/" + id + "?key=" + API_KEY)
-                        .retrieve()
-                        .toEntity(GameCardDetailsModel.class)
-                        .block())
-                .getBody();
-        return gameCardModel;
+        return Objects.requireNonNull(webClient.get()
+                .uri("/games/" + id + "?key=" + API_KEY)
+                .retrieve()
+                .bodyToMono(GameCardDetailsModel.class)
+                .block());
     }
 
     public List<GameCardModel> getNewAndUpcomingGames() {
