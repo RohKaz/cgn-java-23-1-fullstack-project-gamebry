@@ -34,6 +34,10 @@ export default function GameCardDetailsPage() {
         return <h1>NO DATA</h1>;
     }
 
+    if (!details.releaseDate) {
+        details.releaseDate = "TBA";
+    }
+
     const genre = details.genres.map((genre, index) => (
         <ListItemText key={genre.id} primary={`${genre.name}${index !== details.genres.length - 1 ? ', ' : ''}`}/>
     ));
@@ -42,7 +46,6 @@ export default function GameCardDetailsPage() {
         <ListItemText key={publisher.id}
                       primary={`${publisher.name}${index !== details.publishers.length - 1 ? ', ' : ''}`}/>
     ));
-
 
     return (
         <Box sx={{
@@ -71,7 +74,7 @@ export default function GameCardDetailsPage() {
                      alt={"Here should be a cover image of the game"}
                      src={details.cover}
                 />
-                <List sx={{maxWidth: 400, height: "auto", color: "black", marginTop: 2,}}
+                <List sx={{maxWidth: 400, height: "auto", color: "white", marginTop: 2}}
                       component={"nav"}>
                     <ListItemButton onClick={handleClick}>
                         <ListItemIcon>

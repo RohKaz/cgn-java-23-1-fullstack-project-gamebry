@@ -28,7 +28,7 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
             borderColor: "black",
             backgroundColor: "#1f345c",
             textAlign: "left",
-            padding: 1
+            padding: 5
         }}>
             <Typography sx={{
                 fontSize: 30,
