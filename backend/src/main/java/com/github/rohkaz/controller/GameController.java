@@ -1,7 +1,8 @@
 package com.github.rohkaz.controller;
 
-import com.github.rohkaz.model.Game;
-import com.github.rohkaz.service.GameService;
+import com.github.rohkaz.gamecardmodel.GameCardDetailsModel;
+import com.github.rohkaz.gamecardmodel.GameCardModel;
+import com.github.rohkaz.webclient.RawgApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,20 +12,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api")
 @RequiredArgsConstructor
+@RequestMapping("api")
 public class GameController {
+    private final RawgApiService rawgApiService;
 
-    private final GameService gameService;
-
-    @GetMapping("/games")
-    public List<Game> getAllGames() {
-        return gameService.getAllGames();
+    @GetMapping("/games/new")
+    public List<GameCardModel> getNewAndUpcomingGames() {
+        return rawgApiService.getNewAndUpcomingGames();
     }
 
-    @GetMapping("/games/{gameId}")
-    public Game getGameByID(@PathVariable String gameId) {
-        return gameService.getGameByID(gameId);
+    @GetMapping("/games")
+    public List<GameCardModel> getAllGames() {
+        return rawgApiService.getAllGames();
+    }
+
+    @GetMapping("/games/{id}")
+    public GameCardDetailsModel getGameById(@PathVariable int id) {
+        return rawgApiService.getGameById(id);
     }
 }
 

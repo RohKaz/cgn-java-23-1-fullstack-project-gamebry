@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Game} from "./model/Game";
+import {GameCardModel} from "./model/GameCardModel";
 import axios from "axios";
 import GameCardGallery from "./component/GameCardGallery";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
@@ -7,17 +7,18 @@ import GameCardDetailsPage from "./component/GameCardDetailsPage";
 
 function App() {
 
-    const [game, setGame] = useState<Game[]>([]);
+    const [game, setGame] = useState<GameCardModel[]>([]);
 
-    function getGames() {
-        axios.get("/api/games")
+    function getNewAndUpcomingGames() {
+        axios.get("/api/games/new")
             .then(response => {
                 setGame(response.data);
             })
             .catch(console.error);
     }
+
     useEffect(() => {
-        getGames()
+        getNewAndUpcomingGames()
     }, []);
 
     return (
@@ -25,7 +26,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path={"/"} element={<GameCardGallery games={game}/>}/>
-                    <Route path={"/games/:gameId"} element={<GameCardDetailsPage/>}/>
+                    <Route path={"/games/:id"} element={<GameCardDetailsPage/>}/>
                 </Routes>
             </BrowserRouter>
         </div>

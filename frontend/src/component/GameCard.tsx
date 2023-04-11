@@ -3,20 +3,20 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import {Link, Tooltip, Zoom} from '@mui/material';
-import {Game} from "../model/Game";
+import {GameCardModel} from "../model/GameCardModel";
 
 type GameCardProps = {
-    game: Game;
+    game: GameCardModel;
 }
 
 export default function GameCard(props: GameCardProps) {
 
     return (
-        <Tooltip TransitionComponent={Zoom} title={"Go to " + props.game.gameTitle} followCursor={true}>
-            <Link href={"/games/" + props.game.gameId} sx={{textDecoration: "none"}}>
+        <Tooltip TransitionComponent={Zoom} title={"Go to " + props.game.title} followCursor={true}>
+            <Link href={"/games/" + props.game.id} sx={{textDecoration: "none"}}>
                 <Card sx={{
-                    width: 180,
-                    minHeight: 280,
+                    width: 150,
+                    minHeight: 200,
                     height: "auto",
                     margin: 0.5,
                     border: 2,
@@ -26,17 +26,19 @@ export default function GameCard(props: GameCardProps) {
                 }}>
                     <CardMedia
                         component="img"
-                        src={props.game.gameCover}
+                        src={props.game.cover}
                         alt="Here should be a cover image of the game"
                         sx={{
-                            maxHeight: 220,
+                            maxHeight: 240,
                             width: 180,
+                            height: "fit-content"
                         }}
                     />
                     <CardContent sx={{
                         color: "white",
+                        fontSize: 12
                     }}>
-                        {props.game.gameTitle}
+                        {props.game.title}
                     </CardContent>
                 </Card>
             </Link>
