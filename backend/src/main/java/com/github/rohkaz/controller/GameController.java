@@ -1,7 +1,7 @@
 package com.github.rohkaz.controller;
 
-import com.github.rohkaz.gamecardmodel.GameCardDetailsModel;
-import com.github.rohkaz.gamecardmodel.GameCardModel;
+import com.github.rohkaz.model.GameCardDetailsModel;
+import com.github.rohkaz.model.GameCardModel;
 import com.github.rohkaz.webclient.RawgApiService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

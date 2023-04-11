@@ -1,8 +1,8 @@
 package com.github.rohkaz.webclient;
 
-import com.github.rohkaz.gamecardmodel.GameCardDetailsModel;
-import com.github.rohkaz.gamecardmodel.GameCardModel;
-import com.github.rohkaz.gamecardmodel.GameCardModelResponse;
+import com.github.rohkaz.model.GameCardDetailsModel;
+import com.github.rohkaz.model.GameCardModel;
+import com.github.rohkaz.model.GameCardModelResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

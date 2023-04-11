@@ -1,4 +1,4 @@
-package com.github.rohkaz.gamecardmodel;
+package com.github.rohkaz.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;

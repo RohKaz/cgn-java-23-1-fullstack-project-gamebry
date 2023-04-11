@@ -1,4 +1,4 @@
-package com.github.rohkaz.gamecardmodel;
+package com.github.rohkaz.model;
 
 public record Genre(
 
