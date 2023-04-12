@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -26,6 +27,7 @@ class UserControllerTest {
     @DisplayName("testing createNewUser - api/users")
     class UserCreationTests {
         @Test
+        @DirtiesContext
         void whenCreateNewUser_thenReturnNewUserWithStatus200OK() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
                             .content("""
@@ -49,6 +51,7 @@ class UserControllerTest {
         }
 
         @Test
+        @DirtiesContext
         @DisplayName("should return status 400 and Username is required")
         void whenCreateNewUserWithNoUsername_ThenReturnStatus400() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
@@ -64,6 +67,7 @@ class UserControllerTest {
         }
 
         @Test
+        @DirtiesContext
         @DisplayName("should return status 400 and Password is required")
         void whenCreateNewUserWithNoPassword_ThenReturnStatus400() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
@@ -79,6 +83,7 @@ class UserControllerTest {
         }
 
         @Test
+        @DirtiesContext
         @DisplayName("should return status 409 and User already exists")
         void whenCreateNewUserThatAlreadyExists_ThenReturnStatus409() throws Exception {
             mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
@@ -110,6 +115,7 @@ class UserControllerTest {
     @DisplayName("testing getAllUsers - api/users/all")
     class getUsersTests {
         @Test
+        @DirtiesContext
         @DisplayName("should give out the list of all users that are saved in the database")
         @WithMockUser(username = "Roh", password = "password", roles = "BASIC")
         void whenGetAllUsers_thenReturnListWith200OK() throws Exception {
