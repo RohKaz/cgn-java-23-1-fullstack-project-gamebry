@@ -31,7 +31,7 @@ public class UserController {
         AppUser newUser = new AppUser(
                 user.id(),
                 user.username(),
-                user.password(),
+                passwordEncoder.encode(user.password()),
                 "BASIC"
         );
 
@@ -40,7 +40,7 @@ public class UserController {
         return new AppUser(
                 out.id(),
                 out.username(),
-                null,
+                "********",
                 out.role()
         );
     }
