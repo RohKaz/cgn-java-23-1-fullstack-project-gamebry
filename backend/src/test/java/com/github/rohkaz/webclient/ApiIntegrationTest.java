@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
@@ -39,6 +40,7 @@ class ApiIntegrationTest {
     }
 
     @Test
+    @WithMockUser(username = "Roh", password = "password")
     void testGetAllGames() throws Exception {
         mockWebServer.enqueue(new MockResponse()
                 .setHeader("Content-Type", "application/json")
@@ -68,6 +70,7 @@ class ApiIntegrationTest {
     }
 
     @Test
+    @WithMockUser(username = "Roh", password = "password")
     void testGetNewAndUpcomingGames() throws Exception {
         mockWebServer.enqueue(new MockResponse()
                 .setHeader("Content-Type", "application/json")
@@ -92,6 +95,7 @@ class ApiIntegrationTest {
     }
 
     @Test
+    @WithMockUser(username = "Roh", password = "password")
     void testGetGameById() throws Exception {
         mockWebServer.enqueue(new MockResponse()
                 .setHeader("Content-Type", "application/json")
