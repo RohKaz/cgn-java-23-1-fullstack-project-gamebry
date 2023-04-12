@@ -11,6 +11,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -48,6 +49,7 @@ class UserControllerTest {
                                     "role": "BASIC"
                                     }
                                     """)
+                            .with(csrf())
                             .contentType("application/json"))
                     .andExpect(status().isOk())
                     .andExpect(content().json("""
@@ -72,6 +74,7 @@ class UserControllerTest {
                                     "role": "BASIC"
                                     }
                                     """)
+                            .with(csrf())
                             .contentType("application/json"))
                     .andExpect(status().isBadRequest());
         }
@@ -88,6 +91,7 @@ class UserControllerTest {
                                     "role": "BASIC"
                                     }
                                     """)
+                            .with(csrf())
                             .contentType("application/json"))
                     .andExpect(status().isBadRequest());
         }
@@ -105,6 +109,7 @@ class UserControllerTest {
                                     "role": "BASIC"
                                     }
                                     """)
+                            .with(csrf())
                             .contentType("application/json"))
                     .andExpect(status().isOk());
             mockMvc.perform(MockMvcRequestBuilders.post("/api/users")
@@ -116,6 +121,7 @@ class UserControllerTest {
                                     "role": "BASIC"
                                     }
                                     """)
+                            .with(csrf())
                             .contentType("application/json"))
                     .andExpect(status().isConflict());
         }
