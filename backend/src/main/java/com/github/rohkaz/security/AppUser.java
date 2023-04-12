@@ -1,6 +1,6 @@
 package com.github.rohkaz.security;
 
-public record User(
+public record AppUser(
 
         String id,
         String username,
