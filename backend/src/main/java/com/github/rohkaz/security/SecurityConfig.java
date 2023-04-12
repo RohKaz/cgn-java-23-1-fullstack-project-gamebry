@@ -2,13 +2,11 @@ package com.github.rohkaz.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -21,14 +19,15 @@ public class SecurityConfig {
                 .csrf().disable()
                 .httpBasic().and()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/**").authenticated()
+                .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .and().build();
     }
 
-    @Bean
+    /*@Bean
     public UserDetailsManager userDetailsService() {
         return new InMemoryUserDetailsManager(
                 User.builder()
@@ -37,7 +36,7 @@ public class SecurityConfig {
                         .roles("ADMIN")
                         .build()
         );
-    }
+    }*/
 
     @Bean
     public PasswordEncoder passwordEncoder() {
