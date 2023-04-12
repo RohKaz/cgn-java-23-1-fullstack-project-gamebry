@@ -39,7 +39,12 @@ export default function GameCard(props: GameCardProps) {
                         fontSize: 12
                     }}>
                         {props.game.title}
-                    </CardContent>
+                <Tooltip title={"Add to your favorites"} followCursor={true}>
+                    <IconButton>
+                        <Checkbox icon={<StarBorder/>} checkedIcon={<Star/>}/>
+                    </IconButton>
+                </Tooltip>
+            </CardContent>
                 </Card>
             </Link>
         </Tooltip>
