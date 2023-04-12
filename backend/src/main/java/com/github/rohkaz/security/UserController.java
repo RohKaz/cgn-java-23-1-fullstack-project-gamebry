@@ -2,6 +2,7 @@ package com.github.rohkaz.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -48,6 +49,14 @@ public class UserController {
     @GetMapping("all")
     public List<AppUser> getAllUsers() {
         return appUserRepository.findAll();
+    }
+
+    @GetMapping("/me")
+    public String getLoggedInUser() {
+        return SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getName();
     }
 
 }
