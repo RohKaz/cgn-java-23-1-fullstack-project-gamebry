@@ -127,9 +127,9 @@ class UserControllerTest {
         @Test
         @DirtiesContext
         @DisplayName("should give out the list of all users that are saved in the database")
-        @WithMockUser(username = "Roh", password = "password", roles = "BASIC")
+        @WithMockUser(username = "Roh", password = "password", roles = "ADMIN")
         void whenGetAllUsers_thenReturnListWith200OK() throws Exception {
-            appUserRepository.save(new AppUser("1", "Roh", "password", "BASIC"));
+            appUserRepository.save(new AppUser("1", "Rohi", "password", "BASIC"));
             appUserRepository.save(new AppUser("2", "Phillip", "password", "BASIC"));
             mockMvc.perform(MockMvcRequestBuilders.get("/api/users/all"))
                     .andExpect(status().isOk())
@@ -137,7 +137,7 @@ class UserControllerTest {
                             [
                             {
                             "id": "1",
-                            "username": "Roh",
+                            "username": "Rohi",
                             "password": "password",
                             "role": "BASIC"
                             },
