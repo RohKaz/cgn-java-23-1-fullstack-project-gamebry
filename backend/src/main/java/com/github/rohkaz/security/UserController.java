@@ -1,10 +1,9 @@
 package com.github.rohkaz.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/users")
@@ -16,6 +15,11 @@ public class UserController {
     @PostMapping
     public AppUser createNewUser(@RequestBody AppUser user) {
         return appUserRepository.save(user);
+    }
+
+    @GetMapping("all")
+    public List<AppUser> getAllUsers() {
+        return appUserRepository.findAll();
     }
 
 }
