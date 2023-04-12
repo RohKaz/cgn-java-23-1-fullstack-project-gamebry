@@ -23,6 +23,16 @@ class UserControllerTest {
     @Autowired
     AppUserRepository appUserRepository;
 
+    @Test
+    @DirtiesContext
+    @DisplayName("should return status 200 and name of user")
+    @WithMockUser(username = "Roh", password = "password", roles = "BASIC")
+    void whenGetLoggedInUser_ThenReturnStatus200AndNameOfUser() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/users/me"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Roh"));
+    }
+
     @Nested
     @DisplayName("testing createNewUser - api/users")
     class UserCreationTests {
