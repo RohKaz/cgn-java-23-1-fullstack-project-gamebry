@@ -1,6 +1,6 @@
 package com.github.rohkaz.security;
 
-public record MongoUser(
+public record User(
 
         String id,
         String username,
