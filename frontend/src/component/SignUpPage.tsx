@@ -56,15 +56,6 @@ export default function SignUpPage() {
                     fontSize={"inherit"}/></Typography>
             </header>
 
-            <form onSubmit={e => {
-                e.preventDefault();
-                axios.post("/api/users", {username, password})
-                    .then(res => {
-                        navigate("/sign-in");
-                    }).catch((error) => {
-                    alert(error.response.data.message);
-                });
-            }}>
                 <Card
                     sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 10, boxShadow: 5}}>
                     <div>
@@ -104,7 +95,6 @@ export default function SignUpPage() {
                                 variant={"outlined"} size={"small"}>Sign In</Button>
                     </Link>
                 </Card>
-            </form>
             <Typography sx={{textDecoration: "none"}}>Powered by RAWG</Typography>
         </Box>
     );

@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -33,15 +34,14 @@ public class SecurityConfig {
                 .httpBasic()
                 .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpStatus.UNAUTHORIZED.value(), HttpStatus.UNAUTHORIZED.getReasonPhrase()))
                 .and()
+                .sessionManagement(config -> config.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/api/users").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/users/me").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/users/all").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/api/games").authenticated()
-                .requestMatchers(HttpMethod.GET, "/api/games/**").authenticated()
+                .requestMatchers(HttpMethod.GET, "/api/games/new").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .anyRequest().permitAll()
-                .and()
-                .formLogin()
                 .and().build();
     }
 

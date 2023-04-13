@@ -6,6 +6,7 @@ import {Box, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText
 import Typography from "@mui/material/Typography";
 import AccessTime from "@mui/icons-material/AccessTime";
 import {Category, ExpandLess, ExpandMore, Info, SupervisedUserCircle} from "@mui/icons-material";
+import AppBarHeader from "./AppBarHeader";
 
 
 export default function GameCardDetailsPage() {
@@ -48,7 +49,7 @@ export default function GameCardDetailsPage() {
     ));
 
     return (
-        <Box sx={{
+        <><AppBarHeader/><Box sx={{
             display: "flex",
             flexDirection: "",
             height: "fit-content",
@@ -72,8 +73,7 @@ export default function GameCardDetailsPage() {
                     marginTop: 2
                 }}
                      alt={"Here should be a cover image of the game"}
-                     src={details.cover}
-                />
+                     src={details.cover}/>
                 <List sx={{maxWidth: 400, height: "auto", color: "white", marginTop: 2}}
                       component={"nav"}>
                     <ListItemButton onClick={handleClick}>
@@ -117,6 +117,6 @@ export default function GameCardDetailsPage() {
                     <p>{details.description_raw}</p>
                 </Typography>
             </Typography>
-        </Box>
+        </Box></>
     )
 }

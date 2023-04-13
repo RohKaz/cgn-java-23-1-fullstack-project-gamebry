@@ -2,6 +2,8 @@ import {GameCardModel} from "../model/GameCardModel";
 import GameCard from "./GameCard";
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import useAuth from "../hooks/useAuth";
+import AppBarHeader from "./AppBarHeader";
 
 type GameCardGalleryProps = {
     games: GameCardModel[];
@@ -9,13 +11,14 @@ type GameCardGalleryProps = {
 
 export default function GameCardGallery(props: GameCardGalleryProps) {
 
+    const user = useAuth(true);
     const games = props.games.map((game) => {
         return (
             <GameCard game={game} key={game.id}/>
         )
     })
     return (
-        <Box sx={{
+        <><AppBarHeader/><Box sx={{
             display: "flex",
             minHeight: "fit-content",
             maxHeight: "100%",
@@ -38,6 +41,6 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
                 New and upcoming releases
             </Typography>
             {games}
-        </Box>
+        </Box></>
     )
 }

@@ -73,7 +73,7 @@ public class UserController {
         );
     }
 
-    @GetMapping("/login")
+    @PostMapping("/login")
     public AppUser login(Principal principal) {
         return getLoggedInUser(principal);
     }
