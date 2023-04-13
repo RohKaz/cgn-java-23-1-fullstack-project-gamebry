@@ -53,6 +53,16 @@ class UserControllerTest {
                 .andExpect(status().isUnauthorized());
     }
 
+    @Test
+    @DirtiesContext
+    @DisplayName("should return status 200")
+    @WithMockUser(username = "Roh", password = "password")
+    void logOutUser_thenStatus200OK() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/users/logout")
+                        .with(csrf()))
+                .andExpect(status().isOk());
+    }
+
     @Nested
     @DisplayName("testing createNewUser - api/users")
     class UserCreationTests {
