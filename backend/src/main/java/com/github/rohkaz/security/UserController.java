@@ -1,5 +1,6 @@
 package com.github.rohkaz.security;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -76,6 +77,11 @@ public class UserController {
     @PostMapping("/login")
     public AppUser login(Principal principal) {
         return getLoggedInUser(principal);
+    }
+
+    @PostMapping("/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
     }
 
 }

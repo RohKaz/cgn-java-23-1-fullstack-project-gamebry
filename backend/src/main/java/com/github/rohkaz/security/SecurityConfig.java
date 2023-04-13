@@ -10,6 +10,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
 
@@ -42,7 +43,14 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/games/new").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/users/login").permitAll()
                 .anyRequest().permitAll()
-                .and().build();
+                .and()
+                .logout(logout -> logout
+                        .logoutUrl("/api/users/logout")
+                        .clearAuthentication(true)
+                        .invalidateHttpSession(true)
+                        .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler(HttpStatus.OK))
+                        .permitAll())
+                .build();
     }
 
 }

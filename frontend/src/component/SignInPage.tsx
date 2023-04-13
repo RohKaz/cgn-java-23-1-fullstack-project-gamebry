@@ -52,7 +52,7 @@ export default function SignInPage() {
             </header>
 
             <Card
-                sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 10, boxShadow: 5}}>
+                sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 6, boxShadow: 5}}>
                 <div>
                     <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
                     <p><AccountBox fontSize={"large"}/></p>
@@ -80,7 +80,10 @@ export default function SignInPage() {
                         variant={"outlined"} size={"small"} onClick={() => handleSignIn(username, password)}>Sign
                     In</Button>
             </Card>
-            <Typography sx={{textDecoration: "none"}}>Powered by RAWG</Typography>
+            <Typography sx={{fontSize: 15}}>Don't have an account yet?</Typography>
+            <div><Typography><Button variant={"outlined"} onClick={() => navigate("/")}>Sign up</Button></Typography>
+            </div>
+            <Typography sx={{textDecoration: "none", marginTop: 6}}>Powered by RAWG</Typography>
         </Box>
     );
 
