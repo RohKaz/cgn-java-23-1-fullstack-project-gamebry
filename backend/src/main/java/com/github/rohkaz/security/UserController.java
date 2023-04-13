@@ -2,11 +2,11 @@ package com.github.rohkaz.security;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -46,17 +46,36 @@ public class UserController {
         );
     }
 
-    @GetMapping("all")
+    @GetMapping("/all")
     public List<AppUser> getAllUsers() {
         return appUserRepository.findAll();
     }
 
-    @GetMapping("/me")
+    /*@GetMapping("/me")
     public String getLoggedInUser() {
         return SecurityContextHolder
                 .getContext()
                 .getAuthentication()
                 .getName();
+    }*/
+
+    @GetMapping("/me")
+    public AppUser getLoggedInUser(Principal principal) {
+        AppUser me = appUserRepository
+                .findByUsername(principal.getName())
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED));
+
+        return new AppUser(
+                me.id(),
+                me.username(),
+                "********",
+                me.role()
+        );
+    }
+
+    @GetMapping("/login")
+    public AppUser login(Principal principal) {
+        return getLoggedInUser(principal);
     }
 
 }
