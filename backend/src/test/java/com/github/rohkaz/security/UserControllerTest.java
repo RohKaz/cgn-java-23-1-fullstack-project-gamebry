@@ -12,8 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -29,9 +28,11 @@ class UserControllerTest {
     @DisplayName("should return status 200 and name of user")
     @WithMockUser(username = "Roh", password = "password", roles = "BASIC")
     void whenGetLoggedInUser_ThenReturnStatus200AndNameOfUser() throws Exception {
+        appUserRepository.save(new AppUser("1", "Roh", "password", "BASIC"));
         mockMvc.perform(MockMvcRequestBuilders.get("/api/users/me"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Roh"));
+                .andExpect(jsonPath("$.username").value("Roh"))
+                .andExpect(jsonPath("$.password").value("********"));
     }
 
     @Nested

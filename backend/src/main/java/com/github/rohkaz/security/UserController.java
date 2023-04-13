@@ -59,7 +59,7 @@ public class UserController {
                 .getName();
     }*/
 
-    @GetMapping("/me")
+    @GetMapping("me")
     public AppUser getLoggedInUser(Principal principal) {
         AppUser me = appUserRepository
                 .findByUsername(principal.getName())
