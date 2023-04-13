@@ -23,6 +23,7 @@ export default function SignUpPage() {
             });
     };
 
+
     return (
         <Box
             sx={{
