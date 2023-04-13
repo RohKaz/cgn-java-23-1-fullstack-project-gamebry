@@ -5,6 +5,7 @@ import {Box, Button, TextField} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Card from "@mui/material/Card";
 import {Games, Login} from "@mui/icons-material";
+import Cookies from "js-cookie";
 
 
 export default function SignUpPage() {
@@ -14,13 +15,20 @@ export default function SignUpPage() {
     const [password, setPassword] = useState<string>("");
 
     const handleSignUp = (username: string, password: string) => {
-        axios.post("/api/users", {username, password})
-            .then(() => {
-                navigate("/sign-in");
-            })
-            .catch((error) => {
-                alert(error.response.data.error);
-            });
+        axios
+            .get("/api/csrf")
+            .then(() => axios.post("/api/users", {username, password},
+                {
+                    headers: {
+                        "X-XSRF-TOKEN": Cookies.get("XSRF-TOKEN")
+                    }
+                })
+                .then(() => {
+                    navigate("/sign-in");
+                })
+                .catch((error) => {
+                    alert(error.response.data.message);
+                }))
     };
 
 
