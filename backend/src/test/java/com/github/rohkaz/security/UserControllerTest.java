@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,6 +34,23 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.username").value("Roh"))
                 .andExpect(jsonPath("$.password").value("********"));
+    }
+
+    @Test
+    @DirtiesContext
+    @DisplayName("should return status 401")
+    @WithMockUser(username = "Roh", password = "password")
+    void whenGetLoggedInUserWithNoUser_ThenReturnStatus401() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/users/login")
+                        .with(csrf())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {
+                                "username": "Rodh",
+                                "password": "passwosgrd"
+                                }
+                                """))
+                .andExpect(status().isUnauthorized());
     }
 
     @Nested
