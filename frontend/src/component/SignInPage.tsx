@@ -46,10 +46,8 @@ export default function SignInPage() {
                 color: "white",
             }}
         >
-            <header>
                 <Typography variant={"h4"} sx={{textAlign: "center", marginBottom: 3}}>Welcome to GaMeBry! <Games
                     fontSize={"inherit"}/></Typography>
-            </header>
 
             <Card
                 sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 6}}>
