@@ -24,10 +24,11 @@ export default function SignUpPage() {
                     }
                 })
                 .then(() => {
+                    alert("You have successfully signed up! Welcome to GaMeBry " + username + "!")
                     navigate("/sign-in");
                 })
                 .catch((error) => {
-                    alert(error.response.data.message);
+                    alert("Username already exists");
                 }))
     };
 

@@ -1,4 +1,4 @@
-import {Box, Button, TextField} from "@mui/material";
+import {Alert, Box, Button, Stack, TextField} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import {AccountBox, Games, Login} from "@mui/icons-material";
 import axios from "axios";
@@ -12,6 +12,14 @@ export default function SignInPage() {
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
 
+    function LogInAlert() {
+        return (
+            <Stack sx={{width: '100%'}} spacing={2}>
+                <Alert severity="success">You have successfully logged in!</Alert>
+            </Stack>
+        );
+    }
+
     const handleSignIn = (username: string, password: string) => {
         axios
             .get("/api/csrf")
@@ -21,9 +29,10 @@ export default function SignInPage() {
                         Authorization: `Basic ${window.btoa(`${username}:${password}`)}`
                     }
                 }).then(() => {
-                navigate("/home");
-            }).catch((error) => {
-                alert(error.response.data.message);
+                navigate("/home")
+                alert("You have successfully logged in!")
+            }).catch(() => {
+                alert("Invalid username or password");
             }))
     };
 
