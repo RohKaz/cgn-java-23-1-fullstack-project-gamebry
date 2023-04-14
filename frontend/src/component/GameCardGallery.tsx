@@ -22,6 +22,7 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
         return response;
     }, function (error) {
         if (error.response.status === 401) {
+            alert("You are not authorized to view this page. Please sign in.")
             window.location.href = "/sign-in";
         }
         return Promise.reject(error);
