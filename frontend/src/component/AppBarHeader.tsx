@@ -25,10 +25,6 @@ function ResponsiveAppBar() {
         });
         navigate('/profile');
     };
-    const handleLoginSubmit = () => {
-
-        navigate('/login');
-    };
     const handleLogoutSubmit = () => {
         axios.post('/api/users/logout').then(() => {
             navigate('/sign-in');

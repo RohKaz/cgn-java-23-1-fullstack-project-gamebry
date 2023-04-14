@@ -2,7 +2,6 @@ import {GameCardModel} from "../model/GameCardModel";
 import GameCard from "./GameCard";
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import useAuth from "../hooks/useAuth";
 import AppBarHeader from "./AppBarHeader";
 import axios from "axios";
 
@@ -12,7 +11,6 @@ type GameCardGalleryProps = {
 
 export default function GameCardGallery(props: GameCardGalleryProps) {
 
-    const user = useAuth(true);
     const games = props.games.map((game) => {
         return (
             <GameCard game={game} key={game.id}/>
