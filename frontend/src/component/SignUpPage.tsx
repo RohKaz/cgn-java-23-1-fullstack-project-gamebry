@@ -75,6 +75,7 @@ export default function SignUpPage() {
                             <TextField
                                 id={"outlined-basic"}
                                 label={"Password"}
+                                type={"password"}
                                 variant={"outlined"}
                                 onChange={e => setPassword(e.currentTarget.value)}/>
                         </label>

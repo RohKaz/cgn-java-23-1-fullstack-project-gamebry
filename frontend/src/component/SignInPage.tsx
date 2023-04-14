@@ -20,7 +20,7 @@ export default function SignInPage() {
                     headers: {
                         Authorization: `Basic ${window.btoa(`${username}:${password}`)}`
                     }
-                }).then(res => {
+                }).then(() => {
                 navigate("/home");
             }).catch((error) => {
                 alert(error.response.data.error);
@@ -71,6 +71,7 @@ export default function SignInPage() {
                         <TextField
                             id={"outlined-basic"}
                             label={"Password"}
+                            type={"password"}
                             variant={"outlined"}
                             onChange={e => setPassword(e.currentTarget.value)}/>
                     </label>
@@ -80,9 +81,9 @@ export default function SignInPage() {
                         variant={"outlined"} size={"small"} onClick={() => handleSignIn(username, password)}>Sign
                     In</Button>
             </Card>
-            <Typography sx={{fontSize: 15}}>Don't have an account yet?</Typography>
-            <div><Typography><Button variant={"outlined"} onClick={() => navigate("/")}>Sign up</Button></Typography>
-            </div>
+            <Typography sx={{fontSize: 15}}>Don't have an account yet?
+                <Button sx={{fontSize: 10}} variant={"outlined"} onClick={() => navigate("/")}>Sign
+                    up</Button></Typography>
             <Typography sx={{textDecoration: "none", marginTop: 6}}>Powered by RAWG</Typography>
         </Box>
     );
