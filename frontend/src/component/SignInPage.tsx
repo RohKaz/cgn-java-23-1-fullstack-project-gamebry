@@ -5,6 +5,7 @@ import axios from "axios";
 import Card from "@mui/material/Card";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
+import {debounce} from 'lodash';
 
 
 export default function SignInPage() {
@@ -26,6 +27,9 @@ export default function SignInPage() {
                 alert(error.response.data.error);
             }))
     };
+
+    const debouncedHandleSignIn = debounce(handleSignIn, 1000);
+
 
     return (
         <Box
@@ -78,7 +82,7 @@ export default function SignInPage() {
                 </div>
 
                 <Button sx={{marginTop: 2, marginBottom: 1, alignContent: "center"}} startIcon={<Login/>}
-                        variant={"outlined"} size={"small"} onClick={() => handleSignIn(username, password)}>Sign
+                        variant={"outlined"} size={"small"} onClick={() => debouncedHandleSignIn(username, password)}>Sign
                     In</Button>
             </Card>
             <Typography sx={{fontSize: 15}}>Don't have an account yet?
