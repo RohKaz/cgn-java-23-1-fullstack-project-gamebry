@@ -40,7 +40,7 @@ class ApiIntegrationTest {
     }
 
     @Test
-    @WithMockUser(username = "Roh", password = "password")
+    @WithMockUser(username = "Roh", password = "password", roles = "BASIC")
     void testGetAllGames() throws Exception {
         mockWebServer.enqueue(new MockResponse()
                 .setHeader("Content-Type", "application/json")
