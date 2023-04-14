@@ -5,7 +5,6 @@ import axios from "axios";
 import Card from "@mui/material/Card";
 import {useNavigate} from "react-router-dom";
 import React, {useState} from "react";
-import {debounce} from 'lodash';
 
 
 export default function SignInPage() {
@@ -27,8 +26,6 @@ export default function SignInPage() {
                 alert(error.response.data.error);
             }))
     };
-
-    const debouncedHandleSignIn = debounce(handleSignIn, 1000);
 
 
     return (
@@ -60,29 +57,22 @@ export default function SignInPage() {
                 <div>
                     <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
                     <p><AccountBox fontSize={"large"}/></p>
-                    <label>
                         <TextField
                             sx={{marginBottom: 2}}
                             id={"outlined-basic"}
                             label={"Username"}
                             variant={"outlined"}
                             onChange={e => setUsername(e.currentTarget.value)}/>
-                    </label>
                 </div>
-
-                <div>
-                    <label>
                         <TextField
                             id={"outlined-basic"}
                             label={"Password"}
                             type={"password"}
                             variant={"outlined"}
                             onChange={e => setPassword(e.currentTarget.value)}/>
-                    </label>
-                </div>
 
                 <Button sx={{marginTop: 2, marginBottom: 1, alignContent: "center"}} startIcon={<Login/>}
-                        variant={"outlined"} size={"small"} onClick={() => debouncedHandleSignIn(username, password)}>Sign
+                        variant={"outlined"} size={"small"} onClick={() => handleSignIn(username, password)}>Sign
                     In</Button>
             </Card>
             <Typography sx={{fontSize: 15}}>Don't have an account yet?
