@@ -11,14 +11,6 @@ function App() {
 
     const [game, setGame] = useState<GameCardModel[]>([]);
 
-    axios.interceptors.response.use(function (response) {
-        return response;
-    }, function (error) {
-        if (error.response.status === 401) {
-            window.location.href = "/sign-in";
-        }
-        return Promise.reject(error);
-    });
 
     function getNewAndUpcomingGames() {
         axios.get("/api/games/new")

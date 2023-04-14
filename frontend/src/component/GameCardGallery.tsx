@@ -4,6 +4,7 @@ import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import useAuth from "../hooks/useAuth";
 import AppBarHeader from "./AppBarHeader";
+import axios from "axios";
 
 type GameCardGalleryProps = {
     games: GameCardModel[];
@@ -17,6 +18,15 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
             <GameCard game={game} key={game.id}/>
         )
     })
+    axios.interceptors.response.use(function (response) {
+        return response;
+    }, function (error) {
+        if (error.response.status === 401) {
+            window.location.href = "/sign-in";
+        }
+        return Promise.reject(error);
+    });
+
     return (
         <><AppBarHeader/><Box sx={{
             display: "flex",
