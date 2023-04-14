@@ -32,7 +32,7 @@ export default function GameCardDetailsPage() {
     }, [details, requestURL]);
 
     if (!details) {
-        return <h1>NO DATA</h1>;
+        return <h1>Loading data...</h1>;
     }
 
     if (!details.releaseDate) {
