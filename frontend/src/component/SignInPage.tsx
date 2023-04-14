@@ -27,7 +27,6 @@ export default function SignInPage() {
             }))
     };
 
-
     return (
         <Box
             sx={{
@@ -54,8 +53,8 @@ export default function SignInPage() {
 
             <Card
                 sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 6, boxShadow: 5}}>
-                <div>
-                    <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
+
+            <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
                     <p><AccountBox fontSize={"large"}/></p>
                         <TextField
                             sx={{marginBottom: 2}}
@@ -63,7 +62,6 @@ export default function SignInPage() {
                             label={"Username"}
                             variant={"outlined"}
                             onChange={e => setUsername(e.currentTarget.value)}/>
-                </div>
                         <TextField
                             id={"outlined-basic"}
                             label={"Password"}
