@@ -60,19 +60,20 @@ export default function SignInPage() {
                     label={"Username"}
                     variant={"outlined"}
                     onChange={e => setUsername(e.currentTarget.value)}/>
-                <TextField
-                            id={"outlined-basic"}
-                            label={"Password"}
-                            type={"password"}
-                            variant={"outlined"}
-                            onChange={e => setPassword(e.currentTarget.value)}/>
-
+                <div>
+                    <TextField
+                        id={"outlined-basic"}
+                        label={"Password"}
+                        type={"password"}
+                        variant={"outlined"}
+                        onChange={e => setPassword(e.currentTarget.value)}/>
+                </div>
                 <Button sx={{marginTop: 2, marginBottom: 1, alignContent: "center"}} startIcon={<Login/>}
                         variant={"outlined"} size={"small"} onClick={() => handleSignIn(username, password)}>Sign
                     In</Button>
             </Card>
             <Typography sx={{fontSize: 15}}>Don't have an account yet?
-                <Button sx={{fontSize: 10}} variant={"outlined"} onClick={() => navigate("/")}>Sign
+                <Button sx={{fontSize: 10, marginLeft: 2}} variant={"outlined"} onClick={() => navigate("/")}>Sign
                     up</Button></Typography>
             <Typography sx={{marginTop: 6}}>Powered by RAWG</Typography>
         </Box>
