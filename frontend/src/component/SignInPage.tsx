@@ -23,7 +23,7 @@ export default function SignInPage() {
                 }).then(() => {
                 navigate("/home");
             }).catch((error) => {
-                alert(error.response.data.error);
+                alert(error.response.data.message);
             }))
     };
 
