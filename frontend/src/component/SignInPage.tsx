@@ -52,17 +52,17 @@ export default function SignInPage() {
             </header>
 
             <Card
-                sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 6, boxShadow: 5}}>
+                sx={{textAlign: "center", padding: 2, border: 5, borderRadius: 4, marginBottom: 6}}>
 
-            <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
-                    <p><AccountBox fontSize={"large"}/></p>
-                        <TextField
-                            sx={{marginBottom: 2}}
-                            id={"outlined-basic"}
-                            label={"Username"}
-                            variant={"outlined"}
-                            onChange={e => setUsername(e.currentTarget.value)}/>
-                        <TextField
+                <Typography variant={"h5"} sx={{margin: 2, textAlign: "center"}}>Sign In</Typography>
+                <p><AccountBox fontSize={"large"}/></p>
+                <TextField
+                    sx={{marginBottom: 2}}
+                    id={"outlined-basic"}
+                    label={"Username"}
+                    variant={"outlined"}
+                    onChange={e => setUsername(e.currentTarget.value)}/>
+                <TextField
                             id={"outlined-basic"}
                             label={"Password"}
                             type={"password"}
@@ -76,7 +76,7 @@ export default function SignInPage() {
             <Typography sx={{fontSize: 15}}>Don't have an account yet?
                 <Button sx={{fontSize: 10}} variant={"outlined"} onClick={() => navigate("/")}>Sign
                     up</Button></Typography>
-            <Typography sx={{textDecoration: "none", marginTop: 6}}>Powered by RAWG</Typography>
+            <Typography sx={{marginTop: 6}}>Powered by RAWG</Typography>
         </Box>
     );
 
