@@ -52,14 +52,6 @@ public class UserController {
         return appUserRepository.findAll();
     }
 
-    /*@GetMapping("/me")
-    public String getLoggedInUser() {
-        return SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getName();
-    }*/
-
     @GetMapping("me")
     public AppUser getLoggedInUser(Principal principal) {
         AppUser me = appUserRepository
