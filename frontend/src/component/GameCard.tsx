@@ -16,7 +16,7 @@ export default function GameCard(props: GameCardProps) {
             <Link href={"/games/" + props.game.id} sx={{textDecoration: "none"}}>
                 <Card sx={{
                     width: 150,
-                    minHeight: 200,
+                    minHeight: 150,
                     height: "auto",
                     margin: 0.5,
                     border: 2,

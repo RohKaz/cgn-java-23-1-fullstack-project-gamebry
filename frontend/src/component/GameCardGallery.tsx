@@ -2,6 +2,8 @@ import {GameCardModel} from "../model/GameCardModel";
 import GameCard from "./GameCard";
 import {Box} from "@mui/material";
 import Typography from "@mui/material/Typography";
+import AppBarHeader from "./AppBarHeader";
+import axios from "axios";
 
 type GameCardGalleryProps = {
     games: GameCardModel[];
@@ -14,8 +16,18 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
             <GameCard game={game} key={game.id}/>
         )
     })
+    axios.interceptors.response.use(function (response) {
+        return response;
+    }, function (error) {
+        if (error.response.status === 401) {
+            alert("You are not authorized to view this page. Please sign in.")
+            window.location.href = "/sign-in";
+        }
+        return Promise.reject(error);
+    });
+
     return (
-        <Box sx={{
+        <><AppBarHeader/><Box sx={{
             display: "flex",
             minHeight: "fit-content",
             maxHeight: "100%",
@@ -28,7 +40,7 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
             borderColor: "black",
             backgroundColor: "#1f345c",
             textAlign: "left",
-            padding: 5
+            padding: 2
         }}>
             <Typography sx={{
                 fontSize: 30,
@@ -38,6 +50,6 @@ export default function GameCardGallery(props: GameCardGalleryProps) {
                 New and upcoming releases
             </Typography>
             {games}
-        </Box>
+        </Box></>
     )
 }
