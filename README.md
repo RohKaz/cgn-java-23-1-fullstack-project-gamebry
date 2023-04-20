@@ -1,7 +1,7 @@
 # About GaMeBry
 GaMeBry is a simple game library app that grants the user access to a huge database of games and lets him/her see them individually and get information about the specific game. You can easily create your own account and login with it whenever you like. This app uses the RAWG-API to get access to all the game data.
 
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/123316641/233344873-fcaee61e-dacc-4ea8-806f-f52caa72f16b.gif)
+![ezgif com-resize](https://user-images.githubusercontent.com/123316641/233345837-2c2e1547-4bfb-4721-beb7-8151b83053b9.gif)
 
 
 ## How to get started
