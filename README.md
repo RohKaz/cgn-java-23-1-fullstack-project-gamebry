@@ -3,4 +3,4 @@ GaMeBry is a simple game library app that grants the user access to a huge datab
 
 ## How to get started
 Simply clone the project from my repository and load the backend with Maven. After that run npm install in the terminal.
-Additionaly to that you have to set your own environment variable for the Mongo database that is being used to save users. Simply go to "Edit configurations" and set the variable as follows: MONGO_URL=mongodb://localhost:27017
+Additional to that you have to set your own environment variable for the Mongo database that is being used to save users. Simply go to "Edit configurations" and set the variable as follows: MONGO_URL=mongodb://localhost:27017
