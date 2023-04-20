@@ -10,6 +10,6 @@ Additional to that you have to set your own environment variable for the Mongo d
 After that you can simply get started and begin using the app by creating your own user first.
 
 ## App-TechStack
-Backend: Java, Spring, Maven, MongoDB
+Backend: Java, Spring, Maven, MongoDB <br></br>
 Frontend: JavaScript/TypeScript, React, MUI
 
